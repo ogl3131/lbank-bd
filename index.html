@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LBank KOC & Partner Hub | Şeffaf Ortaklık ve Kazanç Rehberi</title>
+  <title data-i18n="page_title">LBank KOC & Partner Hub | Şeffaf Ortaklık ve Kazanç Rehberi</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome -->
@@ -55,9 +55,9 @@
         <div>
           <div class="flex items-center space-x-2">
             <span class="font-display font-bold text-xl tracking-tight text-white">LBank</span>
-            <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-lbank-yellow/15 text-lbank-yellow border border-lbank-yellow/30">BD & KOC Portal</span>
+            <span data-i18n="nav_badge" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-lbank-yellow/15 text-lbank-yellow border border-lbank-yellow/30">BD & KOC Portal</span>
           </div>
-          <p class="text-[11px] text-slate-400 hidden sm:block">Resmi İş Ortaklığı, Bonus ve Şeffaf Kazanç Ekosistemi</p>
+          <p data-i18n="nav_sub" class="text-[11px] text-slate-400 hidden sm:block">Resmi İş Ortaklığı, Bonus ve Şeffaf Kazanç Ekosistemi</p>
         </div>
       </div>
 
@@ -65,24 +65,61 @@
       <div class="hidden xl:flex items-center space-x-6 text-xs font-semibold text-slate-300">
         <a href="#exclusive-invite" class="hover:text-lbank-yellow transition-colors text-amber-300 font-bold flex items-center space-x-1">
           <i class="fa-solid fa-crown text-[11px] text-lbank-yellow"></i>
-          <span>1. Özel VIP Davet</span>
+          <span data-i18n="nav_1">1. Özel VIP Davet</span>
         </a>
-        <a href="#philosophy" class="hover:text-lbank-yellow transition-colors">2. Upfront</a>
-        <a href="#calculator" class="hover:text-lbank-yellow transition-colors">3. Simülatör</a>
-        <a href="#bonuses" class="hover:text-lbank-yellow transition-colors">4. Üye Bonusları</a>
-        <a href="#growth-program" class="hover:text-lbank-yellow transition-colors">5. Büyüme Programı</a>
-        <a href="#custom-campaigns" class="hover:text-lbank-yellow transition-colors">6. Özel Yarışmalar</a>
+        <a href="#philosophy" class="hover:text-lbank-yellow transition-colors"><span data-i18n="nav_2">2. Upfront</span></a>
+        <a href="#calculator" class="hover:text-lbank-yellow transition-colors"><span data-i18n="nav_3">3. Simülatör</span></a>
+        <a href="#bonuses" class="hover:text-lbank-yellow transition-colors"><span data-i18n="nav_4">4. Üye Bonusları</span></a>
+        <a href="#growth-program" class="hover:text-lbank-yellow transition-colors"><span data-i18n="nav_5">5. Büyüme Programı</span></a>
+        <a href="#custom-campaigns" class="hover:text-lbank-yellow transition-colors"><span data-i18n="nav_6">6. Özel Yarışmalar</span></a>
       </div>
 
-      <!-- Action Buttons -->
+      <!-- Action Buttons + Language Selector -->
       <div class="flex items-center space-x-3">
+
+        <!-- Language Selector Dropdown -->
+        <div class="relative">
+          <button id="lang-dropdown-btn" type="button" class="inline-flex items-center space-x-2 text-xs font-bold px-3 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700/80 transition-all hover:border-lbank-yellow/50">
+            <span id="current-lang-flag" class="text-sm">🇹🇷</span>
+            <span id="current-lang-name" class="hidden sm:inline">Türkçe</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+          </button>
+
+          <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-48 rounded-2xl bg-[#0D121C] border border-slate-700/80 shadow-2xl py-2 z-50 backdrop-blur-xl">
+            <a href="#" class="lang-option flex items-center justify-between px-4 py-2.5 text-xs hover:bg-white/5 transition-colors" data-lang="en">
+              <span class="flex items-center space-x-2.5"><span>🇬🇧</span><span class="text-white font-medium">English</span></span>
+              <span class="text-[10px] text-slate-500 font-mono">EN</span>
+            </a>
+            <a href="#" class="lang-option flex items-center justify-between px-4 py-2.5 text-xs hover:bg-white/5 transition-colors" data-lang="tr">
+              <span class="flex items-center space-x-2.5"><span>🇹🇷</span><span class="text-white font-medium">Türkçe</span></span>
+              <span class="text-[10px] text-slate-500 font-mono">TR</span>
+            </a>
+            <a href="#" class="lang-option flex items-center justify-between px-4 py-2.5 text-xs hover:bg-white/5 transition-colors" data-lang="hi">
+              <span class="flex items-center space-x-2.5"><span>🇮🇳</span><span class="text-white font-medium">हिन्दी</span></span>
+              <span class="text-[10px] text-slate-500 font-mono">HI</span>
+            </a>
+            <a href="#" class="lang-option flex items-center justify-between px-4 py-2.5 text-xs hover:bg-white/5 transition-colors" data-lang="ur">
+              <span class="flex items-center space-x-2.5"><span>🇵🇰</span><span class="text-white font-medium">اردو</span></span>
+              <span class="text-[10px] text-slate-500 font-mono">UR</span>
+            </a>
+            <a href="#" class="lang-option flex items-center justify-between px-4 py-2.5 text-xs hover:bg-white/5 transition-colors" data-lang="th">
+              <span class="flex items-center space-x-2.5"><span>🇹🇭</span><span class="text-white font-medium">ภาษาไทย</span></span>
+              <span class="text-[10px] text-slate-500 font-mono">TH</span>
+            </a>
+            <a href="#" class="lang-option flex items-center justify-between px-4 py-2.5 text-xs hover:bg-white/5 transition-colors" data-lang="id">
+              <span class="flex items-center space-x-2.5"><span>🇮🇩</span><span class="text-white font-medium">Bahasa Indonesia</span></span>
+              <span class="text-[10px] text-slate-500 font-mono">ID</span>
+            </a>
+          </div>
+        </div>
+
         <a href="https://x.com/businessdevg" target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700/60 transition-all hover:border-lbank-yellow/40">
           <i class="fa-brands fa-x-twitter text-slate-300"></i>
           <span>@businessdevg</span>
         </a>
         <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-xs sm:text-sm font-bold px-4 py-2 rounded-lg bg-lbank-yellow hover:bg-lbank-hover text-black shadow-md shadow-yellow-500/20 transition-all transform hover:-translate-y-0.5">
           <i class="fa-brands fa-telegram text-base"></i>
-          <span>KOC Ol: @arifm1</span>
+          <span data-i18n="nav_cta">KOC Ol: @arifm1</span>
         </a>
       </div>
     </div>
@@ -99,13 +136,13 @@
       <div class="text-center max-w-3xl mx-auto mb-14">
         <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-lbank-yellow/15 border border-lbank-yellow/30 text-lbank-yellow text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
           <i class="fa-solid fa-crown"></i>
-          <span>1. Özel Seçilmiş Profillere VIP Davet</span>
+          <span data-i18n="s1_badge">1. Özel Seçilmiş Profillere VIP Davet</span>
         </div>
-        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+        <h1 data-i18n-html="s1_title" class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
           "Diğer Borsalarda Yeni Üye Bulmak Çok Zor, <br class="hidden sm:inline" />
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-lbank-yellow via-amber-300 to-yellow-200">Farkındayız!</span>"
         </h1>
-        <p class="text-slate-300 text-sm sm:text-lg mt-5 leading-relaxed">
+        <p data-i18n="s1_desc" class="text-slate-300 text-sm sm:text-lg mt-5 leading-relaxed">
           Diğer borsaların KOC'leri zaten bir çok kullanıcıyı üye yaptı! Yeni üyeleri bulmanın ne kadar zor olduğunu sen de çok iyi biliyorsun... LBank olarak tam da bu yüzden bambaşka bir vizyon sunuyoruz.
         </p>
       </div>
@@ -119,36 +156,36 @@
             <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-xl mb-5 group-hover:scale-105 transition-transform">
               <i class="fa-solid fa-users-slash"></i>
             </div>
-            <span class="text-[11px] font-bold uppercase tracking-wider text-rose-400">Piyasa Gerçeği</span>
-            <h3 class="text-xl font-bold text-white mt-1 mb-3">Diğer Borsalarda Pazar Doydu</h3>
-            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            <span data-i18n="s1_c1_tag" class="text-[11px] font-bold uppercase tracking-wider text-rose-400">Piyasa Gerçeği</span>
+            <h3 data-i18n="s1_c1_title" class="text-xl font-bold text-white mt-1 mb-3">Diğer Borsalarda Pazar Doydu</h3>
+            <p data-i18n="s1_c1_desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Diğer borsaların partnerleri neredeyse tüm aktif traderları daha önce üye yaptı. Aynı kitleye aynı borsayı tekrar tekrar sunarak hacim üretmek her geçen gün zorlaşıyor.
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-800/80 text-xs text-slate-300 flex items-center space-x-2">
             <i class="fa-solid fa-check text-rose-400 shrink-0"></i>
-            <span>LBank, kitleniz için henüz keşfedilmemiş taze bir fırsat!</span>
+            <span data-i18n="s1_c1_footer">LBank, kitleniz için henüz keşfedilmemiş taze bir fırsat!</span>
           </div>
         </div>
 
         <!-- Card 2: Özel Seçilmiş Profil (Featured) -->
         <div class="bg-gradient-to-b from-[#161D2C] to-lbank-card border-2 border-lbank-yellow/60 rounded-3xl p-7 relative shadow-xl shadow-yellow-500/10 flex flex-col justify-between group">
-          <div class="absolute -top-3 right-6 bg-lbank-yellow text-black text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow">
+          <div data-i18n="s1_c2_badge" class="absolute -top-3 right-6 bg-lbank-yellow text-black text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow">
             Özel Seçim
           </div>
           <div>
             <div class="w-12 h-12 rounded-2xl bg-lbank-yellow/15 text-lbank-yellow flex items-center justify-center text-xl mb-5 group-hover:scale-105 transition-transform">
               <i class="fa-solid fa-gem"></i>
             </div>
-            <span class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Ayrıcalıklı Teklif</span>
-            <h3 class="text-xl font-bold text-white mt-1 mb-3">İletişime Geçtiğimiz Her Profil Özeldir</h3>
-            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+            <span data-i18n="s1_c2_tag" class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Ayrıcalıklı Teklif</span>
+            <h3 data-i18n="s1_c2_title" class="text-xl font-bold text-white mt-1 mb-3">İletişime Geçtiğimiz Her Profil Özeldir</h3>
+            <p data-i18n-html="s1_c2_desc" class="text-xs sm:text-sm text-slate-200 leading-relaxed">
               LBank Partnerlik Programı herkese açılmaz; <strong class="text-lbank-yellow">sadece özel üyelere doğrudan teklif edilir</strong>. İletişime geçtiğimiz her profil bizim için özeldir; <strong class="text-white">zaten sizinle bizzat bu yüzden iletişime geçtik!</strong>
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-800/80 text-xs text-amber-300 font-semibold flex items-center space-x-2">
             <i class="fa-solid fa-circle-check text-lbank-yellow shrink-0"></i>
-            <span>Profiliniz ve etki gücünüz analiz edilerek seçildiniz.</span>
+            <span data-i18n="s1_c2_footer">Profiliniz ve etki gücünüz analiz edilerek seçildiniz.</span>
           </div>
         </div>
 
@@ -158,15 +195,15 @@
             <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-5 group-hover:scale-105 transition-transform">
               <i class="fa-solid fa-lock-open"></i>
             </div>
-            <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400">Tam Özgürlük</span>
-            <h3 class="text-xl font-bold text-white mt-1 mb-3">Hiçbir Kısıtlama ve Gereksinim Yok!</h3>
-            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            <span data-i18n="s1_c3_tag" class="text-[11px] font-bold uppercase tracking-wider text-emerald-400">Tam Özgürlük</span>
+            <h3 data-i18n="s1_c3_title" class="text-xl font-bold text-white mt-1 mb-3">Hiçbir Kısıtlama ve Gereksinim Yok!</h3>
+            <p data-i18n-html="s1_c3_desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Diğer borsaların aksine sizlere gereksiz kısıtlamalar, zorlayıcı kotalar veya katı gereksinimler dayatmıyoruz. <strong class="text-slate-200">Partnerliğinizi şimdi tanımlatıp daha sonra da dilediğiniz gibi kullanabilirsiniz!</strong>
             </p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-800/80 text-xs text-emerald-400 flex items-center space-x-2">
             <i class="fa-solid fa-check shrink-0"></i>
-            <span>Süre baskısı yok, zorunlu kota yok; tam esneklik!</span>
+            <span data-i18n="s1_c3_footer">Süre baskısı yok, zorunlu kota yok; tam esneklik!</span>
           </div>
         </div>
 
@@ -176,11 +213,11 @@
       <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
         <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 rounded-xl bg-lbank-yellow hover:bg-lbank-hover text-black font-extrabold text-xs sm:text-sm flex items-center space-x-2 transition-all shadow-lg shadow-yellow-500/20">
           <i class="fa-brands fa-telegram text-base"></i>
-          <span>Hemen Telegram'dan BD'ye Yaz (@arifm1)</span>
+          <span data-i18n="s1_btn_tg">Hemen Telegram'dan BD'ye Yaz (@arifm1)</span>
         </a>
         <a href="#calculator" class="px-6 py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm border border-slate-700 flex items-center space-x-2 transition-all">
           <i class="fa-solid fa-calculator text-lbank-yellow"></i>
-          <span>Kazanç Simülatörüne Git</span>
+          <span data-i18n="s1_btn_calc">Kazanç Simülatörüne Git</span>
         </a>
       </div>
 
@@ -195,12 +232,12 @@
       <div class="text-center max-w-3xl mx-auto mb-14">
         <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-lbank-yellow text-xs font-bold uppercase tracking-wider mb-3">
           <i class="fa-solid fa-scale-balanced"></i>
-          <span>2. Upfront (Peşinat) Politikamız</span>
+          <span data-i18n="s2_badge">2. Upfront (Peşinat) Politikamız</span>
         </div>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <h2 data-i18n="s2_title" class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
           "Upfront (Peşin Bütçe) İçin Bize Önce Veri Sunman Gerek!"
         </h2>
-        <p class="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+        <p data-i18n="s2_desc" class="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
           Basitçe empati yapın: Sonuç görmeden bir şeyleri peşin sunmak çok da mantıklı değil! Biz LBank olarak uzun süre çalışacağımız dürüst, düzgün KOC'ler istiyoruz.
         </p>
       </div>
@@ -215,33 +252,33 @@
           <div class="lg:col-span-7 space-y-5">
             <div class="flex items-center space-x-3 text-lbank-yellow">
               <i class="fa-solid fa-quote-left text-3xl opacity-60"></i>
-              <span class="text-xs font-bold tracking-widest uppercase">LBank BD & Ortaklık Çağrısı</span>
+              <span data-i18n="s2_manifesto_tag" class="text-xs font-bold tracking-widest uppercase">LBank BD & Ortaklık Çağrısı</span>
             </div>
 
-            <h3 class="text-xl sm:text-2xl font-bold text-white leading-snug">
+            <h3 data-i18n-html="s2_manifesto_title" class="text-xl sm:text-2xl font-bold text-white leading-snug">
               Basitçe Empati Yapın: <br class="hidden sm:inline" />
               <span class="text-lbank-yellow">Herhangi bir performans görmeden baştan bir şeyler sunmak ne kadar mantıklı?</span>
             </h3>
 
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p data-i18n-html="s2_manifesto_desc" class="text-slate-300 text-sm sm:text-base leading-relaxed">
               Biz LBank olarak günübirlik piyasadan kaybolan avans avcılarını değil; <strong class="text-white">birlikte uzun yıllar kazanacağımız dürüst ve güçlü KOC'leri (iş ortaklarını)</strong> arıyoruz. Bunun için sana kapıyı sonuna kadar açan çok net bir başlangıç anlaşması sunuyoruz:
             </p>
 
-            <!-- 3 Pillar Steps -->
+            <!-- 4 Pillar Steps -->
             <div class="space-y-3 pt-2">
               <div class="flex items-start space-x-3 bg-black/40 p-3.5 rounded-xl border border-slate-800">
                 <div class="w-6 h-6 rounded-full bg-lbank-yellow text-black flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
                 <div>
-                  <h4 class="text-white font-semibold text-xs sm:text-sm">KOC Ol ve Referanslarını Başlat</h4>
-                  <p class="text-slate-400 text-xs">Hemen panelini aç, özel linkinle topluluğunu yönlendirmeye başla.</p>
+                  <h4 data-i18n="s2_step1_title" class="text-white font-semibold text-xs sm:text-sm">KOC Ol ve Referanslarını Başlat</h4>
+                  <p data-i18n="s2_step1_desc" class="text-slate-400 text-xs">Hemen panelini aç, özel linkinle topluluğunu yönlendirmeye başla.</p>
                 </div>
               </div>
 
               <div class="flex items-start space-x-3 bg-black/40 p-3.5 rounded-xl border border-lbank-yellow/30 bg-lbank-yellow/5">
                 <div class="w-6 h-6 rounded-full bg-lbank-yellow text-black flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
                 <div>
-                  <h4 class="text-lbank-yellow font-bold text-xs sm:text-sm">Örnek Anlaşma: 5 Referans Getir + Toplam 1M Hacim Yap!</h4>
-                  <p class="text-slate-300 text-xs mt-0.5">
+                  <h4 data-i18n="s2_step2_title" class="text-lbank-yellow font-bold text-xs sm:text-sm">Örnek Anlaşma: 5 Referans Getir + Toplam 1M Hacim Yap!</h4>
+                  <p data-i18n-html="s2_step2_desc" class="text-slate-300 text-xs mt-0.5">
                     Hem <strong class="text-white">240$ - 300$ arası net komisyonunu</strong> al, hem de ilk başarı hediyesi olarak <strong class="text-lbank-yellow">anında 50$ nakit ödülünü</strong> kazan! (İlk ay toplam 290$ - 350$)
                   </p>
                 </div>
@@ -250,21 +287,21 @@
               <div class="flex items-start space-x-3 bg-black/40 p-3.5 rounded-xl border border-slate-800">
                 <div class="w-6 h-6 rounded-full bg-lbank-yellow text-black flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</div>
                 <div>
-                  <h4 class="text-white font-semibold text-xs sm:text-sm">Daha Sonra Her 1M Hacimde 240$ - 300$ Kazanarak Devam Et!</h4>
-                  <p class="text-slate-400 text-xs">Tek seferlik değil; getirdiğin her 1M hacimde düzenli 240$ - 300$ nakit gelirin cüzdanına yansısın.</p>
+                  <h4 data-i18n="s2_step3_title" class="text-white font-semibold text-xs sm:text-sm">Daha Sonra Her 1M Hacimde 240$ - 300$ Kazanarak Devam Et!</h4>
+                  <p data-i18n="s2_step3_desc" class="text-slate-400 text-xs">Tek seferlik değil; getirdiğin her 1M hacimde düzenli 240$ - 300$ nakit gelirin cüzdanına yansısın.</p>
                 </div>
               </div>
 
               <div class="flex items-start space-x-3 bg-black/40 p-3.5 rounded-xl border border-slate-800">
                 <div class="w-6 h-6 rounded-full bg-lbank-yellow text-black flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">4</div>
                 <div>
-                  <h4 class="text-white font-semibold text-xs sm:text-sm">Verini Göster, Masaya Tekrar Otur!</h4>
-                  <p class="text-slate-400 text-xs">KOC ol, referanslarını sun, hacmi göster; anlaşma hemen çok daha iyi şartlarla masaya gelsin!</p>
+                  <h4 data-i18n="s2_step4_title" class="text-white font-semibold text-xs sm:text-sm">Verini Göster, Masaya Tekrar Otur!</h4>
+                  <p data-i18n="s2_step4_desc" class="text-slate-400 text-xs">KOC ol, referanslarını sun, hacmi göster; anlaşma hemen çok daha iyi şartlarla masaya gelsin!</p>
                 </div>
               </div>
             </div>
 
-            <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-200 leading-relaxed">
+            <div data-i18n-html="s2_principle" class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-200 leading-relaxed">
               <strong class="font-bold">Net İlke:</strong> En başta hiçbir şey sunmadan sadece talep etmek maalesef profesyonel iş modelimize uymaz. Ancak verisini ve hacmini sunan ortağımıza hak ettiğinin fazlasını ödemekten asla çekinmeyiz!
             </div>
           </div>
@@ -272,20 +309,20 @@
           <!-- Right: Contrast Comparison Box -->
           <div class="lg:col-span-5 bg-black/60 rounded-2xl p-6 border border-slate-800">
             <h4 class="text-base font-bold text-white mb-4 flex items-center justify-between">
-              <span>Yaklaşım Karşılaştırması</span>
-              <span class="text-[11px] text-slate-400">Vizyon Farkı</span>
+              <span data-i18n="s2_comp_title">Yaklaşım Karşılaştırması</span>
+              <span data-i18n="s2_comp_sub" class="text-[11px] text-slate-400">Vizyon Farkı</span>
             </h4>
 
             <!-- Box 1: Upfront Hunter -->
             <div class="mb-4 p-4 rounded-xl bg-red-950/20 border border-red-900/40">
               <div class="flex items-center space-x-2 text-red-400 text-xs font-bold mb-1">
                 <i class="fa-solid fa-circle-xmark"></i>
-                <span>Günübirlik Peşinat Arayanlar</span>
+                <span data-i18n="s2_comp_bad_title">Günübirlik Peşinat Arayanlar</span>
               </div>
               <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
-                <li>Performans göstermeden peşin bütçe ister</li>
-                <li>Veri ve hacim sunmaz, güven oluşturamaz</li>
-                <li>Tek seferlik avans sonrası kaybolur</li>
+                <li data-i18n="s2_comp_bad_1">Performans göstermeden peşin bütçe ister</li>
+                <li data-i18n="s2_comp_bad_2">Veri ve hacim sunmaz, güven oluşturamaz</li>
+                <li data-i18n="s2_comp_bad_3">Tek seferlik avans sonrası kaybolur</li>
               </ul>
             </div>
 
@@ -293,20 +330,20 @@
             <div class="p-4 rounded-xl bg-lbank-yellow/10 border border-lbank-yellow/40">
               <div class="flex items-center space-x-2 text-lbank-yellow text-xs font-bold mb-1">
                 <i class="fa-solid fa-circle-check"></i>
-                <span>LBank Gerçek KOC ve İş Ortağı</span>
+                <span data-i18n="s2_comp_good_title">LBank Gerçek KOC ve İş Ortağı</span>
               </div>
               <ul class="text-xs text-slate-200 space-y-1.5 list-disc list-inside">
-                <li>Kitlesine güvenir, 1M hacmi gösterir</li>
-                <li>240$ - 300$ komisyonunu + anında 50$ nakit ödülünü alır</li>
-                <li>Her 1M hacimde 240$ - 300$ kazanarak devam eder</li>
+                <li data-i18n="s2_comp_good_1">Kitlesine güvenir, 1M hacmi gösterir</li>
+                <li data-i18n="s2_comp_good_2">240$ - 300$ komisyonunu + anında 50$ nakit ödülünü alır</li>
+                <li data-i18n="s2_comp_good_3">Her 1M hacimde 240$ - 300$ kazanarak devam eder</li>
               </ul>
             </div>
 
             <!-- Visual Milestone Card -->
             <div class="mt-4 p-3.5 rounded-xl bg-gradient-to-r from-amber-500/20 to-yellow-500/10 border border-lbank-yellow/30 text-center">
-              <div class="text-[11px] uppercase tracking-wider text-lbank-yellow font-bold">Örnek Başlangıç Anlaşması</div>
-              <div class="text-lg font-extrabold text-white mt-0.5">5 Üye + 1M Hacim = 240$-300$ + 50$ Nakit</div>
-              <div class="text-[10px] text-slate-300 mt-1">Ardından her 1M hacimde 240$ - 300$ düzenli gelir!</div>
+              <div data-i18n="s2_comp_milestone_badge" class="text-[11px] uppercase tracking-wider text-lbank-yellow font-bold">Örnek Başlangıç Anlaşması</div>
+              <div data-i18n="s2_comp_milestone_val" class="text-lg font-extrabold text-white mt-0.5">5 Üye + 1M Hacim = 240$-300$ + 50$ Nakit</div>
+              <div data-i18n="s2_comp_milestone_sub" class="text-[10px] text-slate-300 mt-1">Ardından her 1M hacimde 240$ - 300$ düzenli gelir!</div>
             </div>
 
           </div>
@@ -325,12 +362,12 @@
       <div class="text-center max-w-3xl mx-auto mb-14">
         <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-lbank-yellow/10 border border-lbank-yellow/30 text-lbank-yellow text-xs font-bold uppercase tracking-wider mb-3">
           <i class="fa-solid fa-calculator"></i>
-          <span>3. KOC Hacim & Gelir Simülatörü</span>
+          <span data-i18n="s3_badge">3. KOC Hacim & Gelir Simülatörü</span>
         </div>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <h2 data-i18n="s3_title" class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
           KOC Hacim & Gelir Simülatörü
         </h2>
-        <p class="text-slate-400 text-sm sm:text-base mt-2">
+        <p data-i18n-html="s3_desc" class="text-slate-400 text-sm sm:text-base mt-2">
           Tahmini aylık işlem hacminizi seçin: <strong class="text-lbank-yellow">%60 Rebate</strong> ile her 1M hacimde <strong class="text-white">240$ - 300$</strong> net kazancınızı görün. <br class="hidden sm:inline" />
           <span class="text-amber-300 font-semibold">✨ Yüksek hacim ve performansta her zaman daha iyi anlaşmalara açığız!</span>
         </p>
@@ -346,7 +383,7 @@
             <div class="flex justify-between items-center mb-3">
               <label for="volume-range" class="text-sm font-bold text-white flex items-center space-x-2">
                 <i class="fa-solid fa-chart-line text-lbank-yellow"></i>
-                <span>Aylık Toplam İşlem Hacminiz (USD)</span>
+                <span data-i18n="s3_vol_label">Aylık Toplam İşlem Hacminiz (USD)</span>
               </label>
               <span id="volume-val" class="text-2xl font-extrabold text-lbank-yellow font-display">$1,000,000</span>
             </div>
@@ -354,7 +391,7 @@
                    class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-lbank-yellow">
             <div class="flex justify-between text-[11px] text-slate-500 mt-2.5 font-mono">
               <span>$500K</span>
-              <span class="text-lbank-yellow font-bold">$1M (Hedef)</span>
+              <span data-i18n="s3_target" class="text-lbank-yellow font-bold">$1M (Hedef)</span>
               <span>$3M</span>
               <span>$5M</span>
               <span>$10M</span>
@@ -367,10 +404,10 @@
             <div class="p-4 rounded-2xl bg-black/40 border border-slate-800">
               <div class="text-xs font-semibold text-slate-400 mb-1 flex items-center space-x-1.5">
                 <i class="fa-solid fa-repeat text-lbank-yellow"></i>
-                <span>Birim Başına Gelir</span>
+                <span data-i18n="s3_unit_title">Birim Başına Gelir</span>
               </div>
-              <div class="text-base font-bold text-white">Her 1M'de 240$ - 300$</div>
-              <p class="text-[11px] text-slate-400 mt-1">%60 rebate ile her 1M hacimde net 240$ - 300$ cüzdanınıza yansır.</p>
+              <div data-i18n="s3_unit_val" class="text-base font-bold text-white">Her 1M'de 240$ - 300$</div>
+              <p data-i18n="s3_unit_desc" class="text-[11px] text-slate-400 mt-1">%60 rebate ile her 1M hacimde net 240$ - 300$ cüzdanınıza yansır.</p>
             </div>
           </div>
 
@@ -381,10 +418,10 @@
             </div>
             <div>
               <h4 class="text-white font-extrabold text-xs sm:text-sm flex items-center space-x-2">
-                <span>Yüksek Hacim & Performans?</span>
-                <span class="text-[10px] px-2 py-0.5 rounded-full bg-lbank-yellow text-black font-extrabold uppercase">Özel Şartlar</span>
+                <span data-i18n="s3_high_title">Yüksek Hacim & Performans?</span>
+                <span data-i18n="s3_high_badge" class="text-[10px] px-2 py-0.5 rounded-full bg-lbank-yellow text-black font-extrabold uppercase">Özel Şartlar</span>
               </h4>
-              <p class="text-xs text-slate-200 mt-1 leading-relaxed">
+              <p data-i18n-html="s3_high_desc" class="text-xs text-slate-200 mt-1 leading-relaxed">
                 Bu oranlar başlangıç standartlarımızdır. <strong class="text-lbank-yellow font-bold">Yüksek hacim ve performansta her zaman daha iyi anlaşmalara açığız!</strong> Hacminiz büyüdükçe şartları sizin lehinize güncellemekten memnuniyet duyarız.
               </p>
             </div>
@@ -394,9 +431,11 @@
           <div class="p-4 rounded-2xl bg-lbank-yellow/5 border border-lbank-yellow/30 text-xs text-slate-300 leading-relaxed">
             <span class="font-bold text-lbank-yellow flex items-center space-x-1.5 mb-1">
               <i class="fa-solid fa-gift"></i>
-              <span>Örnek Başlangıç Anlaşması Hatırlatması:</span>
+              <span data-i18n="s3_deal_reminder_title">Örnek Başlangıç Anlaşması Hatırlatması:</span>
             </span>
-            KOC olup ilk <strong class="text-white">5 referans üye</strong> ve <strong class="text-white">1M hacmi</strong> tamamladığınızda, buradaki komisyonunuza ek olarak <strong class="text-emerald-400">+50$ nakit başarı ödülü</strong> hesabınıza aktarılır!
+            <div data-i18n-html="s3_deal_reminder_desc">
+              KOC olup ilk <strong class="text-white">5 referans üye</strong> ve <strong class="text-white">1M hacmi</strong> tamamladığınızda, buradaki komisyonunuza ek olarak <strong class="text-emerald-400">+50$ nakit başarı ödülü</strong> hesabınıza aktarılır!
+            </div>
           </div>
 
         </div>
@@ -404,12 +443,12 @@
         <!-- Result Card (5 Cols) -->
         <div class="lg:col-span-5 bg-gradient-to-b from-lbank-card via-[#111622] to-[#090D14] border-2 border-lbank-yellow/50 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
           
-          <div class="absolute -top-3 left-8 bg-lbank-yellow text-black text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+          <div data-i18n="s3_card_badge" class="absolute -top-3 left-8 bg-lbank-yellow text-black text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
             %60 Rebate Net Kazanç
           </div>
 
           <div class="mt-4 mb-6">
-            <span class="text-xs text-slate-400 font-medium">Bu Hacimdeki Aylık Komisyon Kazancınız:</span>
+            <span data-i18n="s3_card_label" class="text-xs text-slate-400 font-medium">Bu Hacimdeki Aylık Komisyon Kazancınız:</span>
             <div class="flex items-baseline space-x-2 mt-1">
               <span id="total-earnings" class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-lbank-yellow via-amber-300 to-white font-display">
                 $240 - $300
@@ -418,26 +457,26 @@
             </div>
             <p class="text-xs text-emerald-400 font-semibold mt-1.5 flex items-center space-x-1.5">
               <i class="fa-solid fa-circle-check text-xs"></i>
-              <span>%60 Standart Komisyon İadesi</span>
+              <span data-i18n="s3_card_sub">%60 Standart Komisyon İadesi</span>
             </p>
           </div>
 
           <!-- Breakdown Details -->
           <div class="bg-black/50 rounded-2xl p-4 border border-slate-800 space-y-3 mb-6">
             <div class="flex justify-between items-center text-xs">
-              <span class="text-slate-400">Seçilen Hacim:</span>
+              <span data-i18n="s3_stat_vol" class="text-slate-400">Seçilen Hacim:</span>
               <span id="stat-volume" class="text-white font-bold text-sm">$1,000,000 USD</span>
             </div>
             <div class="flex justify-between items-center text-xs">
-              <span class="text-slate-400">Rebate Oranı:</span>
-              <span class="text-lbank-yellow font-bold text-sm">%60 Rebate</span>
+              <span data-i18n="s3_stat_rate" class="text-slate-400">Rebate Oranı:</span>
+              <span data-i18n="s3_stat_rate_val" class="text-lbank-yellow font-bold text-sm">%60 Rebate</span>
             </div>
             <div class="flex justify-between items-center text-xs pt-2 border-t border-slate-800">
-              <span class="text-slate-400">Komisyon Kazancı:</span>
+              <span data-i18n="s3_stat_earn" class="text-slate-400">Komisyon Kazancı:</span>
               <span id="commission-share" class="text-emerald-400 font-bold text-sm">$240 - $300 USDT</span>
             </div>
             <div class="flex justify-between items-center text-xs">
-              <span class="text-slate-400">Hacim Başına Katsayı:</span>
+              <span data-i18n="s3_stat_mult" class="text-slate-400">Hacim Başına Katsayı:</span>
               <span id="subsequent-earn" class="text-slate-300 font-semibold text-xs">Her 1M'de 240$ - 300$</span>
             </div>
           </div>
@@ -446,15 +485,15 @@
           <div class="text-xs text-slate-300 bg-amber-500/10 border border-amber-500/25 p-4 rounded-xl leading-relaxed mb-6">
             <div class="flex items-center space-x-1.5 text-lbank-yellow font-bold mb-1">
               <i class="fa-solid fa-handshake"></i>
-              <span>Daha İyi Anlaşma Kapısı Her Zaman Açık:</span>
+              <span data-i18n="s3_assurance_title">Daha İyi Anlaşma Kapısı Her Zaman Açık:</span>
             </div>
-            <p><strong class="text-white">Yüksek hacim ve performansta her zaman daha iyi anlaşmalara açığız!</strong> Başarı gösteren ve kitlesiyle hacim üreten tüm KOC'lerimizle masaya oturup şartları tekrar konuşuyoruz.</p>
+            <p data-i18n-html="s3_assurance_desc"><strong class="text-white">Yüksek hacim ve performansta her zaman daha iyi anlaşmalara açığız!</strong> Başarı gösteren ve kitlesiyle hacim üreten tüm KOC'lerimizle masaya oturup şartları tekrar konuşuyoruz.</p>
           </div>
 
           <!-- CTA inside result -->
           <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-xl bg-lbank-yellow hover:bg-lbank-hover text-black font-extrabold text-sm flex items-center justify-center space-x-2 transition-all shadow-lg shadow-yellow-500/20">
             <i class="fa-brands fa-telegram text-base"></i>
-            <span>Hemen KOC Ol (@arifm1)</span>
+            <span data-i18n="s3_btn_koc">Hemen KOC Ol (@arifm1)</span>
           </a>
 
         </div>
@@ -472,19 +511,19 @@
       <div>
         <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-lbank-yellow text-xs font-bold uppercase tracking-wider mb-3">
           <i class="fa-solid fa-bullhorn"></i>
-          <span>4. Kampanyalar & Karşılama Paketi</span>
+          <span data-i18n="s4_badge">4. Kampanyalar & Karşılama Paketi</span>
         </div>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <h2 data-i18n="s4_title" class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
           Yeni Gelen Kullanıcılarınız Ne Kazanır?
         </h2>
-        <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+        <p data-i18n="s4_desc" class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
           Topluluğunuza "LBank'a gelin" dediğinizde onlar için hazırda bekleyen devasa bir avantaj merkezi var.
         </p>
       </div>
 
       <div class="mt-4 md:mt-0">
         <a href="https://www.lbank.com/bonus/center" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-xs font-bold px-4 py-2.5 rounded-xl bg-lbank-yellow/10 hover:bg-lbank-yellow/20 text-lbank-yellow border border-lbank-yellow/40 transition-all">
-          <span>Resmi LBank Bonus Center'ı Aç</span>
+          <span data-i18n="s4_btn_center">Resmi LBank Bonus Center'ı Aç</span>
           <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
         </a>
       </div>
@@ -499,58 +538,58 @@
           <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-lbank-yellow text-xl mb-4 group-hover:scale-110 transition-transform">
             <i class="fa-solid fa-id-card"></i>
           </div>
-          <span class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Adım 1: Kayıt & Doğrulama</span>
-          <h3 class="text-lg font-bold text-white mt-1 mb-2">Hoş Geldin Kupon Paketi</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <span data-i18n="s4_c1_step" class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Adım 1: Kayıt & Doğrulama</span>
+          <h3 data-i18n="s4_c1_title" class="text-lg font-bold text-white mt-1 mb-2">Hoş Geldin Kupon Paketi</h3>
+          <p data-i18n="s4_c1_desc" class="text-xs text-slate-400 leading-relaxed">
             Yeni kaydolan ve temel kimlik doğrulamasını (KYC) tamamlayan her kullanıcı işlem ücreti indirim kuponları ve vadeli işlem deneme bakiyeleri kazanır.
           </p>
           <div class="mt-4 pt-4 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
             <div class="flex items-center justify-between">
-              <span>Kayıt Bonusu:</span>
-              <span class="text-white font-semibold">10 USDT Kupon</span>
+              <span data-i18n="s4_c1_k1">Kayıt Bonusu:</span>
+              <span data-i18n="s4_c1_v1" class="text-white font-semibold">10 USDT Kupon</span>
             </div>
             <div class="flex items-center justify-between">
-              <span>KYC Tamamlama:</span>
-              <span class="text-white font-semibold">20 USDT Bonus</span>
+              <span data-i18n="s4_c1_k2">KYC Tamamlama:</span>
+              <span data-i18n="s4_c1_v2" class="text-white font-semibold">20 USDT Bonus</span>
             </div>
           </div>
         </div>
         <div class="mt-6">
-          <span class="block text-center text-[11px] text-slate-400 bg-slate-900 py-1.5 rounded-lg border border-slate-800">Sıfır Riskle Başlangıç</span>
+          <span data-i18n="s4_c1_tag" class="block text-center text-[11px] text-slate-400 bg-slate-900 py-1.5 rounded-lg border border-slate-800">Sıfır Riskle Başlangıç</span>
         </div>
       </div>
 
       <!-- Card 2: İlk Yatırım (Deposit) Bonusu -->
       <div class="bg-lbank-card border border-lbank-yellow/30 rounded-2xl p-6 flex flex-col justify-between relative shadow-lg shadow-yellow-500/5 group">
-        <div class="absolute -top-2.5 right-4 bg-lbank-yellow text-black text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+        <div data-i18n="s4_c2_badge" class="absolute -top-2.5 right-4 bg-lbank-yellow text-black text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
           En Popüler
         </div>
         <div>
           <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-lbank-yellow text-xl mb-4 group-hover:scale-110 transition-transform">
             <i class="fa-solid fa-money-bill-transfer"></i>
           </div>
-          <span class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Adım 2: İlk Yatırım</span>
-          <h3 class="text-lg font-bold text-white mt-1 mb-2">Kademeli Deposit Bonusu</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <span data-i18n="s4_c2_step" class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Adım 2: İlk Yatırım</span>
+          <h3 data-i18n="s4_c2_title" class="text-lg font-bold text-white mt-1 mb-2">Kademeli Deposit Bonusu</h3>
+          <p data-i18n="s4_c2_desc" class="text-xs text-slate-400 leading-relaxed">
             Kullanıcının ilk yatırdığı miktara göre kademeli olarak vadeli işlem bonusu ve komisyon iadesi tanımlanır.
           </p>
           <div class="mt-4 pt-4 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
             <div class="flex items-center justify-between">
-              <span>100 USDT Yatır:</span>
-              <span class="text-lbank-yellow font-bold">+20 USDT Vadeli</span>
+              <span data-i18n="s4_c2_k1">100 USDT Yatır:</span>
+              <span data-i18n="s4_c2_v1" class="text-lbank-yellow font-bold">+20 USDT Vadeli</span>
             </div>
             <div class="flex items-center justify-between">
-              <span>500 USDT Yatır:</span>
-              <span class="text-lbank-yellow font-bold">+50 USDT Vadeli</span>
+              <span data-i18n="s4_c2_k2">500 USDT Yatır:</span>
+              <span data-i18n="s4_c2_v2" class="text-lbank-yellow font-bold">+50 USDT Vadeli</span>
             </div>
             <div class="flex items-center justify-between">
-              <span>1.000+ USDT Yatır:</span>
-              <span class="text-lbank-yellow font-bold">+150 USDT + VIP 1</span>
+              <span data-i18n="s4_c2_k3">1.000+ USDT Yatır:</span>
+              <span data-i18n="s4_c2_v3" class="text-lbank-yellow font-bold">+150 USDT + VIP 1</span>
             </div>
           </div>
         </div>
         <div class="mt-6">
-          <span class="block text-center text-[11px] text-lbank-yellow bg-yellow-500/10 py-1.5 rounded-lg border border-yellow-500/20 font-semibold">Tüm Kripto & USDT Geçerli</span>
+          <span data-i18n="s4_c2_tag" class="block text-center text-[11px] text-lbank-yellow bg-yellow-500/10 py-1.5 rounded-lg border border-yellow-500/20 font-semibold">Tüm Kripto & USDT Geçerli</span>
         </div>
       </div>
 
@@ -560,28 +599,28 @@
           <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-lbank-yellow text-xl mb-4 group-hover:scale-110 transition-transform">
             <i class="fa-solid fa-chart-line"></i>
           </div>
-          <span class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Adım 3: Trading Görevleri</span>
-          <h3 class="text-lg font-bold text-white mt-1 mb-2">Hacim Ödül Havuzu</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <span data-i18n="s4_c3_step" class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Adım 3: Trading Görevleri</span>
+          <h3 data-i18n="s4_c3_title" class="text-lg font-bold text-white mt-1 mb-2">Hacim Ödül Havuzu</h3>
+          <p data-i18n="s4_c3_desc" class="text-xs text-slate-400 leading-relaxed">
             Spot ve vadeli işlemlerde belirli hacim basamaklarını tamamlayan kullanıcılar ekstra nakit ve bonus fonları çözer.
           </p>
           <div class="mt-4 pt-4 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
             <div class="flex items-center justify-between">
-              <span>10.000$ Vadeli Hacim:</span>
-              <span class="text-white font-semibold">15 USDT Fon</span>
+              <span data-i18n="s4_c3_k1">10.000$ Vadeli Hacim:</span>
+              <span data-i18n="s4_c3_v1" class="text-white font-semibold">15 USDT Fon</span>
             </div>
             <div class="flex items-center justify-between">
-              <span>50.000$ Vadeli Hacim:</span>
-              <span class="text-white font-semibold">50 USDT Fon</span>
+              <span data-i18n="s4_c3_k2">50.000$ Vadeli Hacim:</span>
+              <span data-i18n="s4_c3_v2" class="text-white font-semibold">50 USDT Fon</span>
             </div>
             <div class="flex items-center justify-between">
-              <span>200.000$ Vadeli Hacim:</span>
-              <span class="text-white font-semibold">200 USDT Fon</span>
+              <span data-i18n="s4_c3_k3">200.000$ Vadeli Hacim:</span>
+              <span data-i18n="s4_c3_v3" class="text-white font-semibold">200 USDT Fon</span>
             </div>
           </div>
         </div>
         <div class="mt-6">
-          <span class="block text-center text-[11px] text-slate-400 bg-slate-900 py-1.5 rounded-lg border border-slate-800">Otomatik Hak Ediş</span>
+          <span data-i18n="s4_c3_tag" class="block text-center text-[11px] text-slate-400 bg-slate-900 py-1.5 rounded-lg border border-slate-800">Otomatik Hak Ediş</span>
         </div>
       </div>
 
@@ -591,24 +630,24 @@
           <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-lbank-yellow text-xl mb-4 group-hover:scale-110 transition-transform">
             <i class="fa-solid fa-box-open"></i>
           </div>
-          <span class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Ekstra: Şans Kutuları</span>
-          <h3 class="text-lg font-bold text-white mt-1 mb-2">Mystery Box & Airdrop</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">
+          <span data-i18n="s4_c4_step" class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Ekstra: Şans Kutuları</span>
+          <h3 data-i18n="s4_c4_title" class="text-lg font-bold text-white mt-1 mb-2">Mystery Box & Airdrop</h3>
+          <p data-i18n="s4_c4_desc" class="text-xs text-slate-400 leading-relaxed">
             KOC referans koduyla gelen üyelere özel açılan Mystery Box'lardan 1.000 USDT'ye kadar sürpriz token ve kupon ödülleri çıkar.
           </p>
           <div class="mt-4 pt-4 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
             <div class="flex items-center justify-between">
-              <span>Maksimum Kutu Ödülü:</span>
-              <span class="text-lbank-yellow font-bold">1.000 USDT</span>
+              <span data-i18n="s4_c4_k1">Maksimum Kutu Ödülü:</span>
+              <span data-i18n="s4_c4_v1" class="text-lbank-yellow font-bold">1.000 USDT</span>
             </div>
             <div class="flex items-center justify-between">
-              <span>Yeni Token Airdropları:</span>
-              <span class="text-white font-semibold">Düzenli Haftalık</span>
+              <span data-i18n="s4_c4_k2">Yeni Token Airdropları:</span>
+              <span data-i18n="s4_c4_v2" class="text-white font-semibold">Düzenli Haftalık</span>
             </div>
           </div>
         </div>
         <div class="mt-6">
-          <span class="block text-center text-[11px] text-slate-400 bg-slate-900 py-1.5 rounded-lg border border-slate-800">Topluluğunuz İçin Çekici</span>
+          <span data-i18n="s4_c4_tag" class="block text-center text-[11px] text-slate-400 bg-slate-900 py-1.5 rounded-lg border border-slate-800">Topluluğunuz İçin Çekici</span>
         </div>
       </div>
 
@@ -621,8 +660,8 @@
           <i class="fa-solid fa-globe"></i>
         </div>
         <div>
-          <h4 class="font-bold text-white text-base">Tüm Güncel Kampanyaları Canlı Takip Edin</h4>
-          <p class="text-xs text-slate-400">LBank Bonus Merkezi (Bonus Center) her hafta yeni airdrop, trading yarışması ve deposit etkinliği ekler.</p>
+          <h4 data-i18n="s4_banner_title" class="font-bold text-white text-base">Tüm Güncel Kampanyaları Canlı Takip Edin</h4>
+          <p data-i18n="s4_banner_desc" class="text-xs text-slate-400">LBank Bonus Merkezi (Bonus Center) her hafta yeni airdrop, trading yarışması ve deposit etkinliği ekler.</p>
         </div>
       </div>
       <a href="https://www.lbank.com/bonus/center" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-200 text-black font-bold text-xs shrink-0 flex items-center space-x-2 transition-all">
@@ -640,11 +679,11 @@
       <!-- Badge -->
       <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-lbank-yellow/10 border border-lbank-yellow/30 text-lbank-yellow text-xs font-bold uppercase tracking-wider mb-6">
         <i class="fa-solid fa-shield-halved text-xs"></i>
-        <span>5. LBank Resmi İş Ortaklığı & KOC Büyüme Programı</span>
+        <span data-i18n="s5_badge">5. LBank Resmi İş Ortaklığı & KOC Büyüme Programı</span>
       </div>
 
       <!-- Main Headline -->
-      <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight mb-6">
+      <h2 data-i18n-html="s5_title" class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight mb-6">
         Günübirlik Talepler Değil, <br class="hidden sm:inline" />
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-lbank-yellow via-amber-300 to-yellow-200">
           Sürdürülebilir & Kazançlı Ortaklık!
@@ -652,7 +691,7 @@
       </h2>
 
       <!-- Subtitle -->
-      <p class="text-base sm:text-lg text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+      <p data-i18n-html="s5_desc" class="text-base sm:text-lg text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed">
         Kullanıcılarınıza sunacağınız resmi <strong class="text-slate-200">LBank Hoş Geldin & Yatırım Bonusları</strong>, şeffaf 
         <strong class="text-slate-200">Milestone (Hacim Başarı) Ödülleri</strong> ve neden sonuç odaklı çalıştığımızın açık manifestosu burada.
       </p>
@@ -663,27 +702,27 @@
           <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-lbank-yellow text-lg mb-3">
             <i class="fa-solid fa-gift"></i>
           </div>
-          <h3 class="font-bold text-white text-base">Zengin Üye Bonusları</h3>
-          <p class="text-xs text-slate-400 mt-1">Kayıt, KYC ve ilk yatırıma özel katmanlı bonus kuponları & deneme fonları.</p>
+          <h3 data-i18n="s5_c1_title" class="font-bold text-white text-base">Zengin Üye Bonusları</h3>
+          <p data-i18n="s5_c1_desc" class="text-xs text-slate-400 mt-1">Kayıt, KYC ve ilk yatırıma özel katmanlı bonus kuponları & deneme fonları.</p>
         </div>
 
         <div class="bg-lbank-card/80 border border-lbank-border p-5 rounded-2xl backdrop-blur-sm hover:border-lbank-yellow/40 transition-all text-left border-lbank-yellow/20 relative">
-          <div class="absolute -top-2.5 right-4 bg-lbank-yellow text-black text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">
+          <div data-i18n="s5_c2_badge" class="absolute -top-2.5 right-4 bg-lbank-yellow text-black text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">
             Örnek Anlaşma
           </div>
           <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-lbank-yellow text-lg mb-3">
             <i class="fa-solid fa-coins"></i>
           </div>
-          <h3 class="font-bold text-white text-base">5 Üye + 1M Hacim</h3>
-          <p class="text-xs text-slate-400 mt-1">240$ - 300$ komisyon + anında 50$ nakit ödül! Ardından her 1M'de 240$ - 300$ devam et!</p>
+          <h3 data-i18n="s5_c2_title" class="font-bold text-white text-base">5 Üye + 1M Hacim</h3>
+          <p data-i18n="s5_c2_desc" class="text-xs text-slate-400 mt-1">240$ - 300$ komisyon + anında 50$ nakit ödül! Ardından her 1M'de 240$ - 300$ devam et!</p>
         </div>
 
         <div class="bg-lbank-card/80 border border-lbank-border p-5 rounded-2xl backdrop-blur-sm hover:border-lbank-yellow/40 transition-all text-left">
           <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-lbank-yellow text-lg mb-3">
             <i class="fa-solid fa-handshake-simple"></i>
           </div>
-          <h3 class="font-bold text-white text-base">Şeffaf & Uzun Vadeli</h3>
-          <p class="text-xs text-slate-400 mt-1">Görünmeyen sonuçlara peşin harcama yerine gerçek değere sınırsız ödül.</p>
+          <h3 data-i18n="s5_c3_title" class="font-bold text-white text-base">Şeffaf & Uzun Vadeli</h3>
+          <p data-i18n="s5_c3_desc" class="text-xs text-slate-400 mt-1">Görünmeyen sonuçlara peşin harcama yerine gerçek değere sınırsız ödül.</p>
         </div>
       </div>
 
@@ -691,11 +730,11 @@
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-lbank-yellow hover:bg-lbank-hover text-black font-bold text-sm flex items-center justify-center space-x-2 shadow-lg shadow-yellow-500/20 transition-all">
           <i class="fa-brands fa-telegram text-base"></i>
-          <span>Telegram'dan Başlat (@arifm1)</span>
+          <span data-i18n="s5_btn_tg">Telegram'dan Başlat (@arifm1)</span>
         </a>
         <a href="#bonuses" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-white font-semibold text-sm border border-slate-700 flex items-center justify-center space-x-2 transition-all">
           <i class="fa-solid fa-gift text-lbank-yellow"></i>
-          <span>Yeni Üye Kampanyalarını Gör</span>
+          <span data-i18n="s5_btn_bonuses">Yeni Üye Kampanyalarını Gör</span>
         </a>
       </div>
 
@@ -713,12 +752,12 @@
       <div class="text-center max-w-3xl mx-auto mb-16">
         <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-lbank-yellow/10 border border-lbank-yellow/30 text-lbank-yellow text-xs font-bold uppercase tracking-wider mb-4">
           <i class="fa-solid fa-trophy"></i>
-          <span>6. Hacim Büyütme & Özel Destek</span>
+          <span data-i18n="s6_badge">6. Hacim Büyütme & Özel Destek</span>
         </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        <h2 data-i18n="s6_title" class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
           Hacim Yaparken Asla Yalnız Değilsiniz!
         </h2>
-        <p class="text-slate-300 text-sm sm:text-lg mt-4 leading-relaxed">
+        <p data-i18n-html="s6_desc" class="text-slate-300 text-sm sm:text-lg mt-4 leading-relaxed">
           Biz ek olarak <strong class="text-lbank-yellow">referanslarınıza özel kampanya ve yarışmalar</strong> düzenleyerek hedeflediğiniz hacme çok daha hızlı ve kolay ulaşmanıza yardımcı oluyoruz!
         </p>
       </div>
@@ -731,14 +770,14 @@
           <div class="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center text-lbank-yellow text-2xl mb-6 group-hover:scale-110 transition-transform">
             <i class="fa-solid fa-ranking-star"></i>
           </div>
-          <span class="text-xs font-bold uppercase tracking-wider text-lbank-yellow">1. Özel Turnuvalar</span>
-          <h3 class="text-xl font-bold text-white mt-1 mb-3">Topluluğunuza Özel Trading Yarışması</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+          <span data-i18n="s6_c1_tag" class="text-xs font-bold uppercase tracking-wider text-lbank-yellow">1. Özel Turnuvalar</span>
+          <h3 data-i18n="s6_c1_title" class="text-xl font-bold text-white mt-1 mb-3">Topluluğunuza Özel Trading Yarışması</h3>
+          <p data-i18n-html="s6_c1_desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
             Kanalınız veya grubunuz adına özel <strong class="text-slate-200">"LBank x [Topluluk Adınız] Turnuvası"</strong> kuruyoruz. Ödül havuzunu LBank olarak tamamen biz finanse ediyoruz.
           </p>
           <div class="p-3.5 rounded-xl bg-black/50 border border-slate-800 text-xs text-slate-300 flex items-center space-x-2">
             <i class="fa-solid fa-circle-check text-emerald-400 shrink-0"></i>
-            <span>Üyeleriniz yarışır, sizin hacminiz katlanarak uçar!</span>
+            <span data-i18n="s6_c1_footer">Üyeleriniz yarışır, sizin hacminiz katlanarak uçar!</span>
           </div>
         </div>
 
@@ -747,14 +786,14 @@
           <div class="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center text-lbank-yellow text-2xl mb-6 group-hover:scale-110 transition-transform">
             <i class="fa-solid fa-bullhorn"></i>
           </div>
-          <span class="text-xs font-bold uppercase tracking-wider text-lbank-yellow">2. Tam Pazarlama Desteği</span>
-          <h3 class="text-xl font-bold text-white mt-1 mb-3">Özel Banner, Afiş & Metin Desteği</h3>
-          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+          <span data-i18n="s6_c2_tag" class="text-xs font-bold uppercase tracking-wider text-lbank-yellow">2. Tam Pazarlama Desteği</span>
+          <h3 data-i18n="s6_c2_title" class="text-xl font-bold text-white mt-1 mb-3">Özel Banner, Afiş & Metin Desteği</h3>
+          <p data-i18n="s6_c2_desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
             Kanalınızda paylaşacağınız profesyonel grafik tasarımları, kampanya afişleri ve duyuru metinlerini LBank tasarım ekibimiz logonuzla birlikte ücretsiz hazırlar.
           </p>
           <div class="p-3.5 rounded-xl bg-black/50 border border-slate-800 text-xs text-slate-300 flex items-center space-x-2">
             <i class="fa-solid fa-circle-check text-emerald-400 shrink-0"></i>
-            <span>Sıfır zahmetle profesyonel kampanya yönetin!</span>
+            <span data-i18n="s6_c2_footer">Sıfır zahmetle profesyonel kampanya yönetin!</span>
           </div>
         </div>
 
@@ -769,19 +808,21 @@
         <div class="w-6 h-6 rounded-lg bg-lbank-yellow text-black flex items-center justify-center font-bold text-xs">L</div>
         <span class="font-bold text-slate-300">LBank BD & KOC Strategic Portal</span>
       </div>
-      <p class="max-w-xl mx-auto">
+      <p data-i18n="footer_desc" class="max-w-xl mx-auto">
         Bu portal LBank iş geliştirme (BD), KOC ve affiliate partnerlerinin şeffaf çalışma prensiplerini ve resmi bonus merkezini tanıtmak amacıyla hazırlanmıştır.
       </p>
       <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400 pt-2">
-        <a href="https://www.lbank.com" target="_blank" class="hover:text-lbank-yellow">LBank Resmi Site</a>
-        <a href="https://www.lbank.com/bonus/center" target="_blank" class="hover:text-lbank-yellow">Bonus Center</a>
-        <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="hover:text-lbank-yellow flex items-center space-x-1.5"><i class="fa-brands fa-telegram text-[#229ED9]"></i><span>Telegram: @arifm1</span></a>
-        <a href="https://x.com/businessdevg" target="_blank" rel="noopener noreferrer" class="hover:text-lbank-yellow flex items-center space-x-1.5"><i class="fa-brands fa-x-twitter text-white"></i><span>X: @businessdevg</span></a>
+        <a href="https://www.lbank.com" target="_blank" class="hover:text-lbank-yellow"><span data-i18n="footer_official">LBank Resmi Site</span></a>
+        <a href="https://www.lbank.com/bonus/center" target="_blank" class="hover:text-lbank-yellow"><span data-i18n="footer_center">Bonus Center</span></a>
+        <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="hover:text-lbank-yellow flex items-center space-x-1.5"><i class="fa-brands fa-telegram text-[#229ED9]"></i><span data-i18n="footer_tg">Telegram: @arifm1</span></a>
+        <a href="https://x.com/businessdevg" target="_blank" rel="noopener noreferrer" class="hover:text-lbank-yellow flex items-center space-x-1.5"><i class="fa-brands fa-x-twitter text-white"></i><span data-i18n="footer_x">X: @businessdevg</span></a>
       </div>
-      <p class="text-[11px] text-slate-600">© 2026 LBank Exchange. Tüm Hakları Saklıdır.</p>
+      <p data-i18n="footer_rights" class="text-[11px] text-slate-600">© 2026 LBank Exchange. Tüm Hakları Saklıdır.</p>
     </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="translations.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

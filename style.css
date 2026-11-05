@@ -72,3 +72,32 @@ input[type=range]::-moz-range-thumb {
 .glow-card {
   animation: goldPulse 4s infinite ease-in-out;
 }
+
+/* Language Dropdown Animation */
+#lang-dropdown-menu {
+  animation: fadeInDown 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Multi-language Typography Support */
+body.lang-ur {
+  font-family: 'Segoe UI', Tahoma, 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
