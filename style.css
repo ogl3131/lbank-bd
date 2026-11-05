@@ -1,5 +1,18 @@
 /* Custom Styles for LBank BD & KOC Portal */
 
+/* Strictly prevent horizontal scrolling on mobile */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -29,6 +42,7 @@ input[type=range] {
   background: #182030;
   border-radius: 9999px;
   height: 8px;
+  max-width: 100%;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -100,4 +114,10 @@ body.lang-ur {
 [dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]),
 [dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 1;
+}
+
+/* Responsive utilities */
+.break-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
