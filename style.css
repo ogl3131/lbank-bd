@@ -1,0 +1,123 @@
+/* Custom Styles for LBank BD & KOC Portal */
+
+/* Strictly prevent horizontal scrolling on mobile */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080B10;
+}
+::-webkit-scrollbar-thumb {
+  background: #1F2839;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F5C400;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(18, 23, 34, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(245, 196, 0, 0.15);
+}
+
+/* Slider Custom Styling */
+input[type=range] {
+  -webkit-appearance: none;
+  background: #182030;
+  border-radius: 9999px;
+  height: 8px;
+  max-width: 100%;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #F5C400;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(245, 196, 0, 0.6);
+  border: 2px solid #000;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 18px rgba(245, 196, 0, 0.9);
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #F5C400;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(245, 196, 0, 0.6);
+  border: 2px solid #000;
+}
+
+/* Pulse Glow Animation */
+@keyframes goldPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(245, 196, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(245, 196, 0, 0.35);
+  }
+}
+
+.glow-card {
+  animation: goldPulse 4s infinite ease-in-out;
+}
+
+/* Language Dropdown Animation */
+#lang-dropdown-menu {
+  animation: fadeInDown 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Multi-language Typography Support */
+body.lang-ur {
+  font-family: 'Segoe UI', Tahoma, 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0;
+}
+
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]),
+[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Responsive utilities */
+.break-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
