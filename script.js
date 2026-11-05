@@ -1,7 +1,8 @@
 // LBank BD & KOC Portal Interactive Scripts
 // Multi-Language Localization System & %60 Rebate Volume Simulator
+// Default Primary Language: English (en)
 
-let currentLang = 'tr';
+let currentLang = 'en';
 
 document.addEventListener('DOMContentLoaded', () => {
   initLanguage();
@@ -12,24 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
 function initLanguage() {
   const supportedLangs = ['en', 'tr', 'hi', 'ur', 'th', 'id'];
 
-  // 1. Check URL Parameter: ?lang=en / ?lang=hi / ?lang=ur etc.
+  // 1. Check URL Parameter: ?lang=en / ?lang=hi / ?lang=ur / ?lang=tr etc.
   const urlParams = new URLSearchParams(window.location.search);
   const paramLang = urlParams.get('lang');
 
-  // 2. Check localStorage
+  // 2. Check localStorage (if visitor explicitly clicked a language before)
   const storedLang = localStorage.getItem('lbank_koc_lang');
-
-  // 3. Check Browser Language
-  const browserLang = (navigator.language || navigator.userLanguage || '').slice(0, 2).toLowerCase();
 
   if (paramLang && supportedLangs.includes(paramLang.toLowerCase())) {
     currentLang = paramLang.toLowerCase();
   } else if (storedLang && supportedLangs.includes(storedLang)) {
     currentLang = storedLang;
-  } else if (supportedLangs.includes(browserLang)) {
-    currentLang = browserLang;
   } else {
-    currentLang = 'en'; // Default global fallback
+    // Default starting language is always English!
+    currentLang = 'en';
   }
 
   // Bind dropdown events
@@ -177,7 +174,7 @@ function initCalculator() {
 
       if (dict) {
         if (volumeInM === 1) {
-          subsequentEarn.textContent = dict.s3_mult_1m || 'Her 1M\'de 240$ - 300$';
+          subsequentEarn.textContent = dict.s3_mult_1m || '$240 - $300 on every 1M';
         } else if (typeof dict.s3_mult_nm === 'function') {
           subsequentEarn.textContent = dict.s3_mult_nm(volumeInM, minEarn.toLocaleString('en-US'), maxEarn.toLocaleString('en-US'));
         } else {
@@ -185,7 +182,7 @@ function initCalculator() {
         }
       } else {
         subsequentEarn.textContent = volumeInM === 1 
-          ? 'Her 1M\'de 240$ - 300$' 
+          ? '$240 - $300 on every 1M' 
           : `${volumeInM}M: $${minEarn} - $${maxEarn}`;
       }
     }
