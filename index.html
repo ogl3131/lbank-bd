@@ -1,826 +1,618 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth overflow-x-hidden">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title data-i18n="page_title">LBank KOC & Partner Hub | Transparent Partnership & Earnings Guide</title>
-  <!-- Tailwind CSS CDN -->
+  <title data-i18n="page_title">LBank KOC Partner | Official MCN & Partner Hub</title>
+  <meta name="description" content="Official LBank MCN & KOC Partnership Hub. High commission, trading tournaments, marketing kits, 1-on-1 BD guidance.">
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            lbank: {
-              yellow: '#F5C400',
-              hover: '#E5B700',
-              light: '#FFF9E6',
-              dark: '#0B0E14',
-              card: '#121722',
-              card2: '#19202E',
-              border: '#222B3D'
+            brand: {
+              yellow: '#ffd400',
+              bright: '#e8ff00',
+              dark: '#080904',
+              surface: 'rgba(255, 255, 255, 0.05)',
+              border: 'rgba(255, 212, 0, 0.16)'
             }
           },
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif']
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif']
           }
         }
       }
     }
   </script>
+  
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#080B10] text-slate-100 font-sans antialiased selection:bg-lbank-yellow selection:text-black min-h-screen relative overflow-x-hidden w-full max-w-full">
+<body class="bg-[#080904] text-white font-sans antialiased selection:bg-[#ffd400] selection:text-black min-h-screen relative overflow-x-hidden w-full">
 
-  <!-- Ambient Glow Effects (Clipped to prevent mobile overflow) -->
-  <div class="overflow-hidden pointer-events-none fixed inset-0 -z-10">
-    <div class="absolute top-0 left-1/4 w-[320px] sm:w-[500px] h-[320px] sm:h-[500px] bg-yellow-500/10 rounded-full blur-[100px] sm:blur-[140px]"></div>
-    <div class="absolute bottom-10 right-0 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-amber-600/5 rounded-full blur-[100px] sm:blur-[160px]"></div>
+  <!-- Blueprint Grid Texture -->
+  <div aria-hidden="true" class="blueprint-grid"></div>
+
+  <!-- Header / Navbar -->
+  <header class="sticky top-0 z-50 border-b border-[#e8ff00]/15 bg-[#080904]/90 backdrop-blur-xl">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
+      
+      <!-- Brand Logo -->
+      <a href="#top" class="flex items-center gap-3">
+        <img src="lbank-logo.png" alt="LBank" class="h-8 sm:h-9 w-auto object-contain">
+        <span class="hidden sm:inline-block h-4 w-px bg-white/20"></span>
+        <span class="hidden sm:inline-block text-xs font-black uppercase tracking-[0.18em] text-[#ffd400]" data-i18n="nav_badge">MCN Hub</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-bold uppercase tracking-[0.14em] text-white/65">
+        <a href="#top" class="transition hover:text-[#ffd400]" data-i18n="nav_overview">Overview</a>
+        <button onclick="switchTab(1)" class="transition hover:text-[#e8ff00]" data-i18n="nav_benefits">Benefits</button>
+        <button onclick="switchTab(2)" class="transition hover:text-[#e8ff00]" data-i18n="nav_fit">Fit</button>
+        <button onclick="switchTab(3)" class="transition hover:text-[#e8ff00]" data-i18n="nav_support">Support</button>
+        <button onclick="switchTab(4)" class="transition hover:text-[#e8ff00]" data-i18n="nav_calc">Calculator</button>
+      </nav>
+
+      <!-- Right Controls: Language Selector & CTA -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        
+        <!-- Language Switcher Dropdown -->
+        <div class="relative">
+          <button id="lang-dropdown-btn" type="button" class="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-bold text-white transition hover:border-[#ffd400] hover:bg-white/10">
+            <span id="current-lang-flag">🇬🇧</span>
+            <span id="current-lang-name" class="hidden sm:inline">English</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-white/60 ml-0.5"></i>
+          </button>
+          
+          <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-44 rounded-2xl border border-[#ffd400]/25 bg-[#0e1008] p-1.5 shadow-2xl backdrop-blur-xl z-50">
+            <button class="lang-option w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-xl hover:bg-white/10 transition text-left" data-lang="en">
+              <span>🇬🇧</span> English
+            </button>
+            <button class="lang-option w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-xl hover:bg-white/10 transition text-left" data-lang="tr">
+              <span>🇹🇷</span> Türkçe
+            </button>
+            <button class="lang-option w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-xl hover:bg-white/10 transition text-left" data-lang="hi">
+              <span>🇮🇳</span> हिन्दी (Hindi)
+            </button>
+            <button class="lang-option w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-xl hover:bg-white/10 transition text-left" data-lang="ur">
+              <span>🇵🇰</span> اردو (Urdu)
+            </button>
+            <button class="lang-option w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-xl hover:bg-white/10 transition text-left" data-lang="th">
+              <span>🇹🇭</span> ไทย (Thai)
+            </button>
+            <button class="lang-option w-full flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-xl hover:bg-white/10 transition text-left" data-lang="id">
+              <span>🇮🇩</span> Indonesia
+            </button>
+          </div>
+        </div>
+
+        <!-- Primary Header CTA -->
+        <a href="https://t.me/arifm1" target="_blank" rel="noreferrer" class="flex items-center gap-1.5 rounded-full bg-[#ffd400] px-3.5 sm:px-5 py-1.5 sm:py-2 text-xs font-black uppercase tracking-[0.06em] text-black transition hover:bg-[#e8ff00] hover:shadow-[0_0_20px_rgba(232,255,0,0.5)]">
+          <i class="fa-brands fa-telegram"></i>
+          <span data-i18n="nav_cta">Apply: @arifm1</span>
+        </a>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Quick Nav Row -->
+  <div class="lg:hidden sticky top-16 z-40 bg-[#080904]/95 border-b border-white/10 px-3 py-2 backdrop-blur-md overflow-x-auto no-scrollbar">
+    <div class="flex items-center gap-1.5 min-w-max">
+      <a href="#top" class="px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-white/70 hover:bg-white/10" data-i18n="nav_overview">Overview</a>
+      <button onclick="switchTab(1)" class="px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-white/70 hover:bg-white/10" data-i18n="nav_benefits">Benefits</button>
+      <button onclick="switchTab(2)" class="px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-white/70 hover:bg-white/10" data-i18n="nav_fit">Fit</button>
+      <button onclick="switchTab(3)" class="px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-white/70 hover:bg-white/10" data-i18n="nav_support">Support</button>
+      <button onclick="switchTab(4)" class="px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider text-white/70 hover:bg-white/10" data-i18n="nav_calc">Calculator</button>
+    </div>
   </div>
 
-  <!-- Header / Navigation -->
-  <nav class="sticky top-0 z-50 backdrop-blur-xl bg-[#080B10]/90 border-b border-lbank-border w-full">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
-      <!-- Logo & Tagline -->
-      <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-lbank-yellow to-amber-300 flex items-center justify-center font-bold text-black text-lg sm:text-xl shadow-lg shadow-yellow-500/20 font-display shrink-0">
-          L
-        </div>
-        <div>
-          <div class="flex items-center space-x-1.5 sm:space-x-2">
-            <span class="font-display font-bold text-lg sm:text-xl tracking-tight text-white">LBank</span>
-            <span data-i18n="nav_badge" class="hidden md:inline-block text-[11px] sm:text-xs font-semibold px-2 py-0.5 rounded-full bg-lbank-yellow/15 text-lbank-yellow border border-lbank-yellow/30">BD & KOC Portal</span>
-          </div>
-          <p data-i18n="nav_sub" class="text-[11px] text-slate-400 hidden lg:block">Official Partnership, Bonuses & Transparent Earnings Ecosystem</p>
-        </div>
-      </div>
-
-      <!-- Nav Links (Desktop) -->
-      <div class="hidden xl:flex items-center space-x-6 text-xs font-semibold text-slate-300">
-        <a href="#exclusive-invite" class="hover:text-lbank-yellow transition-colors text-amber-300 font-bold flex items-center space-x-1">
-          <i class="fa-solid fa-crown text-[11px] text-lbank-yellow"></i>
-          <span data-i18n="nav_1">1. VIP Invitation</span>
-        </a>
-        <a href="#philosophy" class="hover:text-lbank-yellow transition-colors"><span data-i18n="nav_2">2. Upfront Policy</span></a>
-        <a href="#calculator" class="hover:text-lbank-yellow transition-colors"><span data-i18n="nav_3">3. Simulator</span></a>
-        <a href="#bonuses" class="hover:text-lbank-yellow transition-colors"><span data-i18n="nav_4">4. User Bonuses</span></a>
-        <a href="#growth-program" class="hover:text-lbank-yellow transition-colors"><span data-i18n="nav_5">5. Growth Program</span></a>
-        <a href="#custom-campaigns" class="hover:text-lbank-yellow transition-colors"><span data-i18n="nav_6">6. Competitions</span></a>
-      </div>
-
-      <!-- Action Buttons + Language Selector -->
-      <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
-
-        <!-- Language Selector Dropdown -->
-        <div class="relative">
-          <button id="lang-dropdown-btn" type="button" class="inline-flex items-center space-x-1.5 text-xs font-bold px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700/80 transition-all hover:border-lbank-yellow/50">
-            <span id="current-lang-flag" class="text-sm">🇬🇧</span>
-            <span id="current-lang-name" class="hidden sm:inline">English</span>
-            <i class="fa-solid fa-chevron-down text-[9px] text-slate-400"></i>
-          </button>
-
-          <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-44 sm:w-48 rounded-2xl bg-[#0D121C] border border-slate-700/80 shadow-2xl py-2 z-50 backdrop-blur-xl">
-            <a href="#" class="lang-option flex items-center justify-between px-3.5 py-2 text-xs hover:bg-white/5 transition-colors" data-lang="en">
-              <span class="flex items-center space-x-2"><span>🇬🇧</span><span class="text-white font-medium">English</span></span>
-              <span class="text-[10px] text-slate-500 font-mono">EN</span>
-            </a>
-            <a href="#" class="lang-option flex items-center justify-between px-3.5 py-2 text-xs hover:bg-white/5 transition-colors" data-lang="tr">
-              <span class="flex items-center space-x-2"><span>🇹🇷</span><span class="text-white font-medium">Türkçe</span></span>
-              <span class="text-[10px] text-slate-500 font-mono">TR</span>
-            </a>
-            <a href="#" class="lang-option flex items-center justify-between px-3.5 py-2 text-xs hover:bg-white/5 transition-colors" data-lang="hi">
-              <span class="flex items-center space-x-2"><span>🇮🇳</span><span class="text-white font-medium">हिन्दी</span></span>
-              <span class="text-[10px] text-slate-500 font-mono">HI</span>
-            </a>
-            <a href="#" class="lang-option flex items-center justify-between px-3.5 py-2 text-xs hover:bg-white/5 transition-colors" data-lang="ur">
-              <span class="flex items-center space-x-2"><span>🇵🇰</span><span class="text-white font-medium">اردو</span></span>
-              <span class="text-[10px] text-slate-500 font-mono">UR</span>
-            </a>
-            <a href="#" class="lang-option flex items-center justify-between px-3.5 py-2 text-xs hover:bg-white/5 transition-colors" data-lang="th">
-              <span class="flex items-center space-x-2"><span>🇹🇭</span><span class="text-white font-medium">ภาษาไทย</span></span>
-              <span class="text-[10px] text-slate-500 font-mono">TH</span>
-            </a>
-            <a href="#" class="lang-option flex items-center justify-between px-3.5 py-2 text-xs hover:bg-white/5 transition-colors" data-lang="id">
-              <span class="flex items-center space-x-2"><span>🇮🇩</span><span class="text-white font-medium">Bahasa Indonesia</span></span>
-              <span class="text-[10px] text-slate-500 font-mono">ID</span>
-            </a>
-          </div>
-        </div>
-
-        <a href="https://x.com/businessdevg" target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700/60 transition-all hover:border-lbank-yellow/40">
-          <i class="fa-brands fa-x-twitter text-slate-300"></i>
-          <span>@businessdevg</span>
-        </a>
-        <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm font-bold px-3 py-2 sm:px-4 rounded-lg bg-lbank-yellow hover:bg-lbank-hover text-black shadow-md shadow-yellow-500/20 transition-all transform hover:-translate-y-0.5 shrink-0">
-          <i class="fa-brands fa-telegram text-sm sm:text-base"></i>
-          <span class="hidden sm:inline" data-i18n="nav_cta">Become KOC: @arifm1</span>
-          <span class="sm:hidden font-extrabold">@arifm1</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- SECTION 1: EXCLUSIVE VIP INVITATION & ZERO RESTRICTIONS -->
-  <section id="exclusive-invite" class="py-12 sm:py-20 bg-gradient-to-b from-[#0B0E14] via-[#0E1422] to-[#080B10] border-b border-lbank-border relative overflow-hidden w-full">
-    <!-- Ambient Glow -->
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[650px] h-[300px] bg-lbank-yellow/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <main>
+    <!-- HERO SECTION (Split Diagonal High-Impact Architecture) -->
+    <section id="top" class="relative overflow-hidden border-b border-[#ffd400]/20">
       
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-lbank-yellow/15 border border-lbank-yellow/30 text-lbank-yellow text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4 shadow-sm max-w-full">
-          <i class="fa-solid fa-crown text-[10px] sm:text-xs shrink-0"></i>
-          <span data-i18n="s1_badge" class="break-words">1. VIP Invitation to Selected Profiles</span>
-        </div>
-        <h1 data-i18n-html="s1_title" class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight break-words">
-          "Finding New Users on Other Exchanges is Hard, <br class="hidden sm:inline" />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-lbank-yellow via-amber-300 to-yellow-200">We Know It!</span>"
-        </h1>
-        <p data-i18n="s1_desc" class="text-slate-300 text-xs sm:text-base lg:text-lg mt-4 sm:mt-5 leading-relaxed break-words">
-          KOCs of other exchanges have already registered most active traders! You know firsthand how challenging it has become to find new users... That's exactly why LBank offers a completely fresh perspective and untouched territory.
-        </p>
-      </div>
+      <!-- Split Gradient Background -->
+      <div class="absolute inset-0 hidden sm:block bg-[radial-gradient(circle_at_78%_34%,rgba(95,130,102,0.34),transparent_30%),linear-gradient(108deg,#ffd400_0%,#ffd400_50%,#101207_50%,#020302_100%)]"></div>
+      <div class="absolute inset-0 sm:hidden bg-[radial-gradient(circle_at_82%_16%,rgba(75,132,119,0.32),transparent_30%),linear-gradient(158deg,#ffd400_0%,#ffd400_36%,#080904_36%,#000000_100%)]"></div>
+      
+      <!-- Subtle Ambient Blobs -->
+      <div class="absolute right-[8%] top-[18%] hidden h-52 w-52 rotate-12 rounded-[44px] bg-[#4b8477]/20 blur-sm lg:block"></div>
+      <div class="absolute bottom-[10%] right-[8%] hidden h-16 w-16 rounded-full border-[8px] border-white/12 bg-white/10 lg:block"></div>
 
-      <!-- 3 Strategic Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-12">
+      <div class="relative mx-auto grid max-w-7xl items-center gap-8 px-4 py-8 sm:px-8 sm:py-16 lg:min-h-[calc(100vh-64px)] lg:grid-cols-[0.95fr_1.05fr]">
         
-        <!-- Card 1: Pazar Gerçeği -->
-        <div class="bg-lbank-card/90 border border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-7 relative hover:border-slate-700 transition-all flex flex-col justify-between group">
-          <div>
-            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-lg sm:text-xl mb-4 sm:mb-5 group-hover:scale-105 transition-transform">
-              <i class="fa-solid fa-users-slash"></i>
-            </div>
-            <span data-i18n="s1_c1_tag" class="text-[11px] font-bold uppercase tracking-wider text-rose-400">Market Reality</span>
-            <h3 data-i18n="s1_c1_title" class="text-lg sm:text-xl font-bold text-white mt-1 mb-2 sm:mb-3">Market Saturated on Other Exchanges</h3>
-            <p data-i18n="s1_c1_desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Affiliates on other platforms have onboarded almost every active trader. Pitching the same saturated platform to your audience makes driving volume harder every single day.
-            </p>
-          </div>
-          <div class="mt-5 sm:mt-6 pt-4 border-t border-slate-800/80 text-xs text-slate-300 flex items-center space-x-2">
-            <i class="fa-solid fa-check text-rose-400 shrink-0"></i>
-            <span data-i18n="s1_c1_footer">LBank is a fresh, untapped high-conversion opportunity for your audience!</span>
-          </div>
-        </div>
+        <!-- Left Column (Yellow side on desktop) -->
+        <div class="text-black pt-2 sm:pt-0 lg:pr-4">
+          <p class="inline-flex rounded-full border border-black/15 bg-black/10 px-3.5 py-1.5 text-xs font-black uppercase tracking-[0.18em]" data-i18n="hero_tag">
+            Official KOC Partnership Program
+          </p>
 
-        <!-- Card 2: Özel Seçilmiş Profil (Featured) -->
-        <div class="bg-gradient-to-b from-[#161D2C] to-lbank-card border-2 border-lbank-yellow/60 rounded-2xl sm:rounded-3xl p-5 sm:p-7 relative shadow-xl shadow-yellow-500/10 flex flex-col justify-between group">
-          <div data-i18n="s1_c2_badge" class="absolute -top-3 right-4 sm:right-6 bg-lbank-yellow text-black text-[10px] font-black px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider shadow">
-            Exclusive Pick
-          </div>
-          <div>
-            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-lbank-yellow/15 text-lbank-yellow flex items-center justify-center text-lg sm:text-xl mb-4 sm:mb-5 group-hover:scale-105 transition-transform">
-              <i class="fa-solid fa-gem"></i>
-            </div>
-            <span data-i18n="s1_c2_tag" class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Privileged Offer</span>
-            <h3 data-i18n="s1_c2_title" class="text-lg sm:text-xl font-bold text-white mt-1 mb-2 sm:mb-3">Every Profile We Reach Out to is Special</h3>
-            <p data-i18n-html="s1_c2_desc" class="text-xs sm:text-sm text-slate-200 leading-relaxed">
-              The LBank Partner Program is not open to everyone; <strong class="text-lbank-yellow">it is offered exclusively to selected creators</strong>. Every profile we contact is valuable to us; <strong class="text-white">that is precisely why we reached out to you!</strong>
-            </p>
-          </div>
-          <div class="mt-5 sm:mt-6 pt-4 border-t border-slate-800/80 text-xs text-amber-300 font-semibold flex items-center space-x-2">
-            <i class="fa-solid fa-circle-check text-lbank-yellow shrink-0"></i>
-            <span data-i18n="s1_c2_footer">Selected after analyzing your profile and audience reach.</span>
-          </div>
-        </div>
+          <h1 class="mt-4 sm:mt-6 text-[3rem] sm:text-[4.5rem] lg:text-[5.5rem] font-black leading-[0.92] tracking-tight">
+            <img src="lbank-logo-black.png" alt="LBANK" class="inline-block h-[0.82em] w-auto object-contain align-bottom mr-2">
+            <span class="block" data-i18n="hero_title">MCN HUB</span>
+          </h1>
 
-        <!-- Card 3: Sıfır Kısıtlama & Tam Özgürlük -->
-        <div class="bg-lbank-card/90 border border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-7 relative hover:border-emerald-500/40 transition-all flex flex-col justify-between group">
-          <div>
-            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg sm:text-xl mb-4 sm:mb-5 group-hover:scale-105 transition-transform">
-              <i class="fa-solid fa-lock-open"></i>
-            </div>
-            <span data-i18n="s1_c3_tag" class="text-[11px] font-bold uppercase tracking-wider text-emerald-400">Total Freedom</span>
-            <h3 data-i18n="s1_c3_title" class="text-lg sm:text-xl font-bold text-white mt-1 mb-2 sm:mb-3">No Restrictions, Quotas or Strict Demands!</h3>
-            <p data-i18n-html="s1_c3_desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Unlike other exchanges, we don't impose burdensome quotas or rigid requirements. <strong class="text-slate-200">Activate your partnership account now and use it whenever you're ready!</strong>
-            </p>
+          <p class="mt-4 sm:mt-5 text-xl sm:text-3xl font-black leading-tight" data-i18n="hero_subtitle">
+            Built for KOCs. Powered by LBank.
+          </p>
+
+          <p class="mt-3 sm:mt-4 max-w-md text-sm sm:text-base font-semibold leading-relaxed text-black/80" data-i18n="hero_desc">
+            Grow your crypto community with campaign support, content guidance, marketing materials, official exposure, and trading-volume commission around 50% - 60%.
+          </p>
+
+          <!-- Direct Hero Action Buttons -->
+          <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="https://t.me/arifm1" target="_blank" rel="noreferrer" class="inline-flex min-h-12 items-center justify-center rounded-full bg-black px-6 py-3 text-center text-xs sm:text-sm font-black uppercase tracking-[0.08em] text-[#ffd400] transition hover:bg-white hover:text-black shadow-lg">
+              <i class="fa-brands fa-telegram text-base mr-2"></i>
+              <span data-i18n="hero_btn_apply">Apply Directly: @arifm1</span>
+            </a>
+            <a href="https://x.com/businessdevg" target="_blank" rel="noreferrer" class="inline-flex min-h-12 items-center justify-center rounded-full border border-black/25 bg-black/5 px-6 py-3 text-center text-xs sm:text-sm font-black uppercase tracking-[0.08em] text-black transition hover:bg-black hover:text-white">
+              <i class="fa-brands fa-x-twitter text-base mr-2"></i>
+              <span data-i18n="hero_btn_x">Official X: @businessdevg</span>
+            </a>
           </div>
-          <div class="mt-5 sm:mt-6 pt-4 border-t border-slate-800/80 text-xs text-emerald-400 flex items-center space-x-2">
-            <i class="fa-solid fa-check shrink-0"></i>
-            <span data-i18n="s1_c3_footer">No time pressure, no mandatory quotas; 100% flexibility!</span>
+
+          <!-- Hero Bottom Badges -->
+          <div class="mt-6 flex flex-wrap gap-2 text-[11px] font-black uppercase tracking-[0.08em]">
+            <span class="rounded-full bg-black/10 border border-black/15 px-3 py-1.5 text-black" data-i18n="pill_access">Official Access</span>
+            <span class="rounded-full bg-black px-3 py-1.5 text-[#ffd400]" data-i18n="pill_campaign">Campaign Support</span>
+            <span class="rounded-full bg-black/10 border border-black/15 px-3 py-1.5 text-black" data-i18n="pill_exposure">Market Exposure</span>
           </div>
         </div>
 
-      </div>
-
-      <!-- Quick Action Buttons in Section 1 -->
-      <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-lg mx-auto sm:max-w-none">
-        <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-lbank-yellow hover:bg-lbank-hover text-black font-extrabold text-xs sm:text-sm flex items-center justify-center space-x-2 transition-all shadow-lg shadow-yellow-500/20">
-          <i class="fa-brands fa-telegram text-base"></i>
-          <span data-i18n="s1_btn_tg">Message Our BD on Telegram Now (@arifm1)</span>
-        </a>
-        <a href="#calculator" class="w-full sm:w-auto px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm border border-slate-700 flex items-center justify-center space-x-2 transition-all">
-          <i class="fa-solid fa-calculator text-lbank-yellow"></i>
-          <span data-i18n="s1_btn_calc">Go to Earnings Simulator</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SECTION 2: THE CORE PHILOSOPHY / EMPATHY & UPFRONT REALITY -->
-  <section id="philosophy" class="py-12 sm:py-16 bg-gradient-to-b from-transparent via-[#0C1018] to-transparent relative border-b border-lbank-border w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-lbank-yellow text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-3">
-          <i class="fa-solid fa-scale-balanced text-[10px] sm:text-xs"></i>
-          <span data-i18n="s2_badge">2. Upfront Budget Policy</span>
-        </div>
-        <h2 data-i18n="s2_title" class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight break-words">
-          "To Unlock Upfront Budgets, Show Us Performance Data First!"
-        </h2>
-        <p data-i18n="s2_desc" class="text-slate-400 text-xs sm:text-sm lg:text-base mt-2 sm:mt-3 leading-relaxed break-words">
-          Put yourself in our shoes: Offering upfront money without seeing any performance doesn't make business sense! At LBank, we seek honest, reliable long-term KOC partners.
-        </p>
-      </div>
-
-      <!-- The Manifesto Card -->
-      <div class="bg-gradient-to-br from-[#131926] via-[#101520] to-[#0A0D14] border border-lbank-yellow/30 rounded-2xl sm:rounded-3xl p-5 sm:p-10 shadow-2xl relative overflow-hidden mb-10 sm:mb-12">
-        <div class="absolute top-0 right-0 w-80 h-80 bg-lbank-yellow/5 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+        <!-- Right Column (Dark Side on desktop) -->
+        <div class="grid gap-4 lg:pl-6">
           
-          <!-- Left: The Narrative -->
-          <div class="lg:col-span-7 space-y-4 sm:space-y-5">
-            <div class="flex items-center space-x-2.5 text-lbank-yellow">
-              <i class="fa-solid fa-quote-left text-2xl sm:text-3xl opacity-60"></i>
-              <span data-i18n="s2_manifesto_tag" class="text-[11px] sm:text-xs font-bold tracking-widest uppercase">LBank BD & Partnership Manifesto</span>
+          <!-- Stat Grid (3 Stat Badges) -->
+          <div class="grid grid-cols-3 gap-2 sm:gap-3">
+            <div class="rounded-2xl sm:rounded-3xl border border-white/10 bg-white/10 p-3 sm:p-5 text-white shadow-xl backdrop-blur">
+              <p class="text-xl sm:text-3xl font-black text-[#ffd400] leading-none" data-i18n="stat_comm_val">50% - 60%</p>
+              <p class="mt-1.5 sm:mt-2 text-[10px] sm:text-xs font-black uppercase tracking-[0.08em] text-white/55" data-i18n="stat_comm_label">Commission Rebate</p>
             </div>
+            <div class="rounded-2xl sm:rounded-3xl border border-white/10 bg-white/10 p-3 sm:p-5 text-white shadow-xl backdrop-blur">
+              <p class="text-xl sm:text-3xl font-black text-[#e8ff00] leading-none" data-i18n="stat_cost_val">0</p>
+              <p class="mt-1.5 sm:mt-2 text-[10px] sm:text-xs font-black uppercase tracking-[0.08em] text-white/55" data-i18n="stat_cost_label">Entry Cost</p>
+            </div>
+            <div class="rounded-2xl sm:rounded-3xl border border-white/10 bg-white/10 p-3 sm:p-5 text-white shadow-xl backdrop-blur">
+              <p class="text-xl sm:text-3xl font-black text-white leading-none" data-i18n="stat_tiers_val">4</p>
+              <p class="mt-1.5 sm:mt-2 text-[10px] sm:text-xs font-black uppercase tracking-[0.08em] text-white/55" data-i18n="stat_tiers_label">Growth Tiers</p>
+            </div>
+          </div>
 
-            <h3 data-i18n-html="s2_manifesto_title" class="text-lg sm:text-2xl font-bold text-white leading-snug break-words">
-              Think Realistically: <br class="hidden sm:inline" />
-              <span class="text-lbank-yellow">Does it make sense to offer upfront payments before seeing any track record?</span>
-            </h3>
-
-            <p data-i18n-html="s2_manifesto_desc" class="text-slate-300 text-xs sm:text-sm lg:text-base leading-relaxed break-words">
-              At LBank, we aren't looking for one-hit upfront hunters who vanish after taking an advance; <strong class="text-white">we seek high-performing, authentic KOCs to grow with for years</strong>. That is why we provide a clear, win-win starter deal:
+          <!-- Who We Are Overview Card -->
+          <div class="relative overflow-hidden rounded-[28px] sm:rounded-[34px] border border-white/12 bg-white/8 p-5 sm:p-8 text-white shadow-2xl backdrop-blur">
+            <div class="absolute -right-6 top-6 h-20 w-20 rounded-full border-[10px] border-[#e8ff00]/20 bg-[#e8ff00]/10 opacity-70"></div>
+            
+            <p class="text-xs font-black uppercase tracking-[0.2em] text-[#ffd400]" data-i18n="about_title">Who We Are</p>
+            <h2 class="mt-3 text-2xl sm:text-4xl font-black leading-tight text-white">Official LBank MCN-KOC Partner Gateway.</h2>
+            <p class="mt-3 sm:mt-4 text-xs sm:text-sm font-medium leading-relaxed text-white/70" data-i18n="about_desc">
+              Built to help creators and communities launch faster with official access, campaign resources, operating guidance, and exposure.
             </p>
 
-            <!-- 4 Pillar Steps -->
-            <div class="space-y-2.5 sm:space-y-3 pt-1">
-              <div class="flex items-start space-x-3 bg-black/40 p-3 sm:p-3.5 rounded-xl border border-slate-800">
-                <div class="w-6 h-6 rounded-full bg-lbank-yellow text-black flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
-                <div>
-                  <h4 data-i18n="s2_step1_title" class="text-white font-semibold text-xs sm:text-sm">Become a KOC & Activate Your Links</h4>
-                  <p data-i18n="s2_step1_desc" class="text-slate-400 text-xs mt-0.5">Set up your affiliate dashboard instantly and start sharing your custom link with your community.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3 bg-black/40 p-3 sm:p-3.5 rounded-xl border border-lbank-yellow/30 bg-lbank-yellow/5">
-                <div class="w-6 h-6 rounded-full bg-lbank-yellow text-black flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
-                <div>
-                  <h4 data-i18n="s2_step2_title" class="text-lbank-yellow font-bold text-xs sm:text-sm">Starter Deal: Bring 5 Referrals + Hit 1M Total Volume!</h4>
-                  <p data-i18n-html="s2_step2_desc" class="text-slate-300 text-xs mt-0.5">
-                    Receive <strong class="text-white">$240 - $300 in net commission</strong>, PLUS an immediate <strong class="text-lbank-yellow">$50 instant cash milestone reward</strong>! (Total: $290 - $350 on your very first month)
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3 bg-black/40 p-3 sm:p-3.5 rounded-xl border border-slate-800">
-                <div class="w-6 h-6 rounded-full bg-lbank-yellow text-black flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</div>
-                <div>
-                  <h4 data-i18n="s2_step3_title" class="text-white font-semibold text-xs sm:text-sm">Then Keep Earning $240 - $300 on Every Subsequent 1M Volume!</h4>
-                  <p data-i18n="s2_step3_desc" class="text-slate-400 text-xs mt-0.5">Not a one-off payment; earn consistent $240 - $300 cash directly to your wallet on every single million traded.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3 bg-black/40 p-3 sm:p-3.5 rounded-xl border border-slate-800">
-                <div class="w-6 h-6 rounded-full bg-lbank-yellow text-black flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">4</div>
-                <div>
-                  <h4 data-i18n="s2_step4_title" class="text-white font-semibold text-xs sm:text-sm">Show Your Numbers, Renegotiate VIP Terms!</h4>
-                  <p data-i18n="s2_step4_desc" class="text-slate-400 text-xs mt-0.5">Become a KOC, deliver results, and we will happily unlock higher VIP tiers, custom upfront budgets, and exclusive perks!</p>
-                </div>
-              </div>
+            <div class="mt-5 sm:mt-6 grid grid-cols-2 gap-2 text-[11px] sm:text-xs font-black uppercase tracking-[0.08em]">
+              <span class="rounded-full bg-[#e8ff00] px-3.5 py-2.5 text-black text-center" data-i18n="pill_access">Official Access</span>
+              <span class="rounded-full bg-white/10 px-3.5 py-2.5 text-white text-center" data-i18n="pill_campaign">Campaign Support</span>
+              <span class="rounded-full bg-white/10 px-3.5 py-2.5 text-white text-center" data-i18n="pill_growth">Creator Growth</span>
+              <span class="rounded-full bg-white/10 px-3.5 py-2.5 text-white text-center" data-i18n="pill_exposure">Market Exposure</span>
             </div>
-
-            <div data-i18n-html="s2_principle" class="p-3.5 sm:p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-200 leading-relaxed">
-              <strong class="font-bold">Core Principle:</strong> Requesting advance funds without delivering any performance does not align with a sustainable business model. But for partners who bring real volume, we never hesitate to reward them far above market standards!
-            </div>
-          </div>
-
-          <!-- Right: Contrast Comparison Box -->
-          <div class="lg:col-span-5 bg-black/60 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-800">
-            <h4 class="text-sm sm:text-base font-bold text-white mb-3 sm:mb-4 flex items-center justify-between">
-              <span data-i18n="s2_comp_title">Approach Comparison</span>
-              <span data-i18n="s2_comp_sub" class="text-[11px] text-slate-400">Mindset Difference</span>
-            </h4>
-
-            <!-- Box 1: Upfront Hunter -->
-            <div class="mb-3 sm:mb-4 p-3.5 sm:p-4 rounded-xl bg-red-950/20 border border-red-900/40">
-              <div class="flex items-center space-x-2 text-red-400 text-xs font-bold mb-1.5">
-                <i class="fa-solid fa-circle-xmark"></i>
-                <span data-i18n="s2_comp_bad_title">Short-Term Upfront Hunters</span>
-              </div>
-              <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
-                <li data-i18n="s2_comp_bad_1">Demands advance cash without demonstrating performance</li>
-                <li data-i18n="s2_comp_bad_2">Provides zero data or volume, builds no trust</li>
-                <li data-i18n="s2_comp_bad_3">Vanishes immediately after receiving a one-off advance</li>
-              </ul>
-            </div>
-
-            <!-- Box 2: Real KOC / Long-Term Partner -->
-            <div class="p-3.5 sm:p-4 rounded-xl bg-lbank-yellow/10 border border-lbank-yellow/40">
-              <div class="flex items-center space-x-2 text-lbank-yellow text-xs font-bold mb-1.5">
-                <i class="fa-solid fa-circle-check"></i>
-                <span data-i18n="s2_comp_good_title">LBank Real KOC & Business Partner</span>
-              </div>
-              <ul class="text-xs text-slate-200 space-y-1.5 list-disc list-inside">
-                <li data-i18n="s2_comp_good_1">Trusts their audience, proves 1M initial volume</li>
-                <li data-i18n="s2_comp_good_2">Takes $240 - $300 commission + instant $50 cash bonus</li>
-                <li data-i18n="s2_comp_good_3">Continues earning $240 - $300 on every 1M volume continuously</li>
-              </ul>
-            </div>
-
-            <!-- Visual Milestone Card -->
-            <div class="mt-3.5 sm:mt-4 p-3 sm:p-3.5 rounded-xl bg-gradient-to-r from-amber-500/20 to-yellow-500/10 border border-lbank-yellow/30 text-center">
-              <div data-i18n="s2_comp_milestone_badge" class="text-[10px] sm:text-[11px] uppercase tracking-wider text-lbank-yellow font-bold">Starter Deal Milestone</div>
-              <div data-i18n="s2_comp_milestone_val" class="text-base sm:text-lg font-extrabold text-white mt-0.5 break-words">5 Users + 1M Volume = $240-$300 + $50 Cash</div>
-              <div data-i18n="s2_comp_milestone_sub" class="text-[10px] text-slate-300 mt-1">Followed by consistent $240 - $300 recurring income on every 1M!</div>
-            </div>
-
           </div>
 
         </div>
 
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- SECTION 3: SIMPLIFIED KOC EARNINGS SIMULATOR (%60 REBATE) -->
-  <section id="calculator" class="py-12 sm:py-16 bg-[#0B0F17] border-b border-lbank-border relative w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- PROGRAM DIRECTORY SECTION (Interactive 4-Tab Hub) -->
+    <section id="hub" class="relative overflow-hidden bg-[#080904] px-4 py-12 sm:px-8 sm:py-20">
       
-      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-lbank-yellow/10 border border-lbank-yellow/30 text-lbank-yellow text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-3">
-          <i class="fa-solid fa-calculator text-[10px] sm:text-xs"></i>
-          <span data-i18n="s3_badge">3. KOC Volume & Earnings Simulator</span>
-        </div>
-        <h2 data-i18n="s3_title" class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight break-words">
-          KOC Volume & Earnings Simulator
-        </h2>
-        <p data-i18n-html="s3_desc" class="text-slate-400 text-xs sm:text-sm lg:text-base mt-2 break-words">
-          Select your estimated monthly volume: See your net earnings of <strong class="text-white">$240 - $300</strong> per 1M volume at standard <strong class="text-lbank-yellow">60% Rebate</strong>. <br class="hidden sm:inline" />
-          <span class="text-amber-300 font-semibold">✨ We are always open to even better customized terms for high volume & top performance!</span>
-        </p>
-      </div>
+      <!-- Subtle Grid Backlight -->
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_12%_10%,rgba(255,212,0,0.08),transparent_25%),radial-gradient(circle_at_90%_20%,rgba(75,132,119,0.15),transparent_28%)]"></div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start max-w-5xl mx-auto">
+      <div class="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[300px_1fr]">
         
-        <!-- Controls Column (7 Cols) -->
-        <div class="lg:col-span-7 bg-lbank-card border border-lbank-border rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-6 sm:space-y-8 w-full">
+        <!-- Left Sidebar: Directory Navigation Tabs -->
+        <aside class="rounded-[28px] border border-white/12 bg-white/5 p-4 shadow-2xl backdrop-blur lg:sticky lg:top-24 lg:self-start">
           
-          <!-- Hacim Slider -->
-          <div>
-            <div class="flex justify-between items-center mb-3 gap-2">
-              <label for="volume-range" class="text-xs sm:text-sm font-bold text-white flex items-center space-x-1.5 sm:space-x-2">
-                <i class="fa-solid fa-chart-line text-lbank-yellow shrink-0"></i>
-                <span data-i18n="s3_vol_label" class="break-words">Total Monthly Trading Volume (USD)</span>
-              </label>
-              <span id="volume-val" class="text-lg sm:text-2xl font-extrabold text-lbank-yellow font-display shrink-0">$1,000,000</span>
-            </div>
-            <input type="range" id="volume-range" min="500000" max="15000000" value="1000000" step="500000" 
-                   class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-lbank-yellow">
-            <div class="flex justify-between text-[10px] sm:text-[11px] text-slate-500 mt-2 font-mono">
-              <span>$500K</span>
-              <span data-i18n="s3_target" class="text-lbank-yellow font-bold">$1M (Target)</span>
-              <span>$3M</span>
-              <span>$5M</span>
-              <span>$10M</span>
-              <span>$15M+</span>
+          <div class="px-2 pb-3 pt-1">
+            <p class="text-xs font-black uppercase tracking-[0.2em] text-[#ffd400]" data-i18n="dir_title">Program Directory</p>
+            <p class="mt-1 text-xs leading-5 text-white/55" data-i18n="dir_subtitle">Select a topic to explore details.</p>
+          </div>
+
+          <!-- 4 Interactive Tab Buttons -->
+          <div class="grid gap-2 mt-2">
+            
+            <button id="tab-btn-1" onclick="switchTab(1)" class="tab-btn active grid grid-cols-[30px_1fr_auto] items-center gap-2.5 px-4 py-3 text-left transition rounded-full">
+              <span class="text-xs font-black">01</span>
+              <span class="text-xs sm:text-sm font-bold" data-i18n="tab_1">01 Benefits for You</span>
+              <i class="fa-solid fa-gift text-xs"></i>
+            </button>
+
+            <button id="tab-btn-2" onclick="switchTab(2)" class="tab-btn grid grid-cols-[30px_1fr_auto] items-center gap-2.5 px-4 py-3 text-left transition rounded-full text-white/70 hover:bg-white/8 hover:text-white">
+              <span class="text-xs font-black">02</span>
+              <span class="text-xs sm:text-sm font-bold" data-i18n="tab_2">02 Who Should Apply</span>
+              <i class="fa-solid fa-users text-xs"></i>
+            </button>
+
+            <button id="tab-btn-3" onclick="switchTab(3)" class="tab-btn grid grid-cols-[30px_1fr_auto] items-center gap-2.5 px-4 py-3 text-left transition rounded-full text-white/70 hover:bg-white/8 hover:text-white">
+              <span class="text-xs font-black">03</span>
+              <span class="text-xs sm:text-sm font-bold" data-i18n="tab_3">03 Support System</span>
+              <i class="fa-solid fa-shield-halved text-xs"></i>
+            </button>
+
+            <button id="tab-btn-4" onclick="switchTab(4)" class="tab-btn grid grid-cols-[30px_1fr_auto] items-center gap-2.5 px-4 py-3 text-left transition rounded-full text-white/70 hover:bg-white/8 hover:text-white">
+              <span class="text-xs font-black">04</span>
+              <span class="text-xs sm:text-sm font-bold" data-i18n="tab_4">04 Earnings Calculator</span>
+              <i class="fa-solid fa-calculator text-xs"></i>
+            </button>
+
+          </div>
+
+          <!-- Fast Contact Box inside Sidebar -->
+          <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 text-white">
+            <p class="text-[11px] font-black uppercase tracking-[0.12em] text-[#ffd400]">Official BD Contacts</p>
+            <div class="mt-3 grid gap-2">
+              <a href="https://t.me/arifm1" target="_blank" rel="noreferrer" class="flex items-center justify-between rounded-xl bg-[#e8ff00] px-3 py-2 text-xs font-black text-black transition hover:bg-white">
+                <span>Telegram: @arifm1</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+              <a href="https://x.com/businessdevg" target="_blank" rel="noreferrer" class="flex items-center justify-between rounded-xl bg-white/10 px-3 py-2 text-xs font-bold text-white transition hover:bg-white/20">
+                <span>X: @businessdevg</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
             </div>
           </div>
 
-          <!-- Quick Highlight Feature Card -->
-          <div class="pt-2 sm:pt-4 border-t border-slate-800">
-            <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-black/40 border border-slate-800">
-              <div class="text-xs font-semibold text-slate-400 mb-1 flex items-center space-x-1.5">
-                <i class="fa-solid fa-repeat text-lbank-yellow"></i>
-                <span data-i18n="s3_unit_title">Earnings Per Unit</span>
+        </aside>
+
+        <!-- Right Content Panels (Tabs) -->
+        <div class="min-w-0">
+          
+          <!-- TAB 1: BENEFITS FOR YOU -->
+          <div id="tab-panel-1" class="tab-panel active">
+            
+            <div class="mb-6 flex items-center justify-between">
+              <div>
+                <span class="text-xs font-black uppercase tracking-[0.2em] text-[#ffd400]">Section 01</span>
+                <h3 class="text-2xl sm:text-3xl font-black text-white mt-1" data-i18n="tab_1">01 Benefits for You</h3>
               </div>
-              <div data-i18n="s3_unit_val" class="text-sm sm:text-base font-bold text-white">$240 - $300 per 1M</div>
-              <p data-i18n="s3_unit_desc" class="text-[11px] text-slate-400 mt-1">Net $240 - $300 per 1M volume credited directly to your wallet via 60% rebate.</p>
             </div>
+
+            <!-- 4 Benefit Cards Grid -->
+            <div class="grid gap-4 sm:grid-cols-2">
+              
+              <!-- Card 1: High Commission -->
+              <div class="hub-card p-6">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-full bg-[#ffd400]/15 px-3 py-1 text-[11px] font-black uppercase text-[#ffd400]" data-i18n="b1_tag">Revenue Share</span>
+                  <div class="h-10 w-10 rounded-full bg-[#ffd400]/10 flex items-center justify-center text-[#ffd400]">
+                    <i class="fa-solid fa-hand-holding-dollar text-lg"></i>
+                  </div>
+                </div>
+                <h4 class="mt-4 text-lg font-black text-white" data-i18n="b1_title">High Commission (~50-60%)</h4>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-white/65" data-i18n="b1_desc">
+                  Earn industry-leading net commission on spot and futures volume, credited directly to your account.
+                </p>
+              </div>
+
+              <!-- Card 2: Funded Tournaments -->
+              <div class="hub-card p-6">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-full bg-[#e8ff00]/15 px-3 py-1 text-[11px] font-black uppercase text-[#e8ff00]" data-i18n="b2_tag">Custom Events</span>
+                  <div class="h-10 w-10 rounded-full bg-[#e8ff00]/10 flex items-center justify-center text-[#e8ff00]">
+                    <i class="fa-solid fa-trophy text-lg"></i>
+                  </div>
+                </div>
+                <h4 class="mt-4 text-lg font-black text-white" data-i18n="b2_title">Funded Trading Tournaments</h4>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-white/65" data-i18n="b2_desc">
+                  We host exclusive trading competitions under your community name, with 100% LBank-funded prize pools.
+                </p>
+              </div>
+
+              <!-- Card 3: Free Custom Graphics -->
+              <div class="hub-card p-6">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-full bg-cyan-400/15 px-3 py-1 text-[11px] font-black uppercase text-cyan-400" data-i18n="b3_tag">Marketing Kit</span>
+                  <div class="h-10 w-10 rounded-full bg-cyan-400/10 flex items-center justify-center text-cyan-400">
+                    <i class="fa-solid fa-palette text-lg"></i>
+                  </div>
+                </div>
+                <h4 class="mt-4 text-lg font-black text-white" data-i18n="b3_title">Free Custom Graphics & Copy</h4>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-white/65" data-i18n="b3_desc">
+                  Official LBank designers provide branded posters, event banners, and announcement texts with your logo.
+                </p>
+              </div>
+
+              <!-- Card 4: 1-on-1 Guidance -->
+              <div class="hub-card p-6">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-full bg-emerald-400/15 px-3 py-1 text-[11px] font-black uppercase text-emerald-400" data-i18n="b4_tag">1-on-1 Guidance</span>
+                  <div class="h-10 w-10 rounded-full bg-emerald-400/10 flex items-center justify-center text-emerald-400">
+                    <i class="fa-solid fa-user-tie text-lg"></i>
+                  </div>
+                </div>
+                <h4 class="mt-4 text-lg font-black text-white" data-i18n="b4_title">Direct BD Manager Access</h4>
+                <p class="mt-2 text-xs sm:text-sm leading-relaxed text-white/65" data-i18n="b4_desc">
+                  Direct connection with our BD manager (@arifm1) for fast campaign setup, custom deals, and strategy reviews.
+                </p>
+              </div>
+
+            </div>
+
           </div>
 
-          <!-- High Performance & Open Deal Callout Box -->
-          <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-lbank-yellow/15 via-amber-500/10 to-black/40 border border-lbank-yellow/40 flex items-start space-x-3 shadow-md">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-lbank-yellow text-black flex items-center justify-center shrink-0 font-bold text-base sm:text-lg mt-0.5">
-              <i class="fa-solid fa-gem"></i>
-            </div>
-            <div>
-              <h4 class="text-white font-extrabold text-xs sm:text-sm flex flex-wrap items-center gap-1.5">
-                <span data-i18n="s3_high_title">High Volume & Performance?</span>
-                <span data-i18n="s3_high_badge" class="text-[10px] px-2 py-0.5 rounded-full bg-lbank-yellow text-black font-extrabold uppercase">Custom Terms</span>
-              </h4>
-              <p data-i18n-html="s3_high_desc" class="text-xs text-slate-200 mt-1 leading-relaxed">
-                These figures represent our initial benchmark. <strong class="text-lbank-yellow font-bold">We are always ready to negotiate even better terms for high volume & performance!</strong> As your volume scales, we gladly upgrade your payout structure.
+          <!-- TAB 2: WHO SHOULD APPLY (PARTNER FIT) -->
+          <div id="tab-panel-2" class="tab-panel">
+            
+            <div class="mb-6">
+              <span class="text-xs font-black uppercase tracking-[0.2em] text-[#ffd400]">Section 02</span>
+              <h3 class="text-2xl sm:text-3xl font-black text-white mt-1" data-i18n="fit_title">Partner Fit & Community Reach</h3>
+              <p class="mt-2 text-sm text-white/60" data-i18n="fit_desc">
+                The best-fit partners have an audience that trusts their content, follows their trading views, or participates actively in crypto communities.
               </p>
             </div>
+
+            <!-- 4 Partner Profiles Grid -->
+            <div class="grid gap-4 sm:grid-cols-2">
+              
+              <div class="hub-card p-6 border-l-4 border-l-[#ffd400]">
+                <div class="flex items-center gap-3">
+                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-[#ffd400] text-black font-black text-sm">01</div>
+                  <h4 class="text-lg font-black text-white" data-i18n="fit_1_title">Community Leaders</h4>
+                </div>
+                <p class="mt-3 text-xs sm:text-sm leading-relaxed text-white/65" data-i18n="fit_1_desc">
+                  Telegram, Discord, X, YouTube, TikTok, or regional crypto group leaders with engaged active members.
+                </p>
+              </div>
+
+              <div class="hub-card p-6 border-l-4 border-l-[#e8ff00]">
+                <div class="flex items-center gap-3">
+                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-[#e8ff00] text-black font-black text-sm">02</div>
+                  <h4 class="text-lg font-black text-white" data-i18n="fit_2_title">Trading-Focused Creators</h4>
+                </div>
+                <p class="mt-3 text-xs sm:text-sm leading-relaxed text-white/65" data-i18n="fit_2_desc">
+                  Creators who publish technical analysis, futures signals, tutorials, market opportunities, and campaign reviews.
+                </p>
+              </div>
+
+              <div class="hub-card p-6 border-l-4 border-l-cyan-400">
+                <div class="flex items-center gap-3">
+                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-400 text-black font-black text-sm">03</div>
+                  <h4 class="text-lg font-black text-white" data-i18n="fit_3_title">Growth Operators</h4>
+                </div>
+                <p class="mt-3 text-xs sm:text-sm leading-relaxed text-white/65" data-i18n="fit_3_desc">
+                  Partners who can drive registrations, first-time deposits (FTDs), active traders, and long-term community volume.
+                </p>
+              </div>
+
+              <div class="hub-card p-6 border-l-4 border-l-emerald-400">
+                <div class="flex items-center gap-3">
+                  <div class="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-400 text-black font-black text-sm">04</div>
+                  <h4 class="text-lg font-black text-white" data-i18n="fit_4_title">Experienced Traders</h4>
+                </div>
+                <p class="mt-3 text-xs sm:text-sm leading-relaxed text-white/65" data-i18n="fit_4_desc">
+                  Traders with solid market experience who share real strategies and help users maximize trading campaigns.
+                </p>
+              </div>
+
+            </div>
+
           </div>
 
-          <!-- Note about Sample Deal -->
-          <div class="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-lbank-yellow/5 border border-lbank-yellow/30 text-xs text-slate-300 leading-relaxed">
-            <span class="font-bold text-lbank-yellow flex items-center space-x-1.5 mb-1">
-              <i class="fa-solid fa-gift"></i>
-              <span data-i18n="s3_deal_reminder_title">Starter Deal Reminder:</span>
-            </span>
-            <div data-i18n-html="s3_deal_reminder_desc">
-              Upon joining as a KOC and reaching your first <strong class="text-white">5 referral users</strong> and <strong class="text-white">1M volume</strong>, you unlock an extra <strong class="text-emerald-400">+$50 instant cash reward</strong> on top of your commissions!
+          <!-- TAB 3: SUPPORT SYSTEM (BENEFIT MATRIX M1 - M4) -->
+          <div id="tab-panel-3" class="tab-panel">
+            
+            <div class="mb-6">
+              <span class="text-xs font-black uppercase tracking-[0.2em] text-[#ffd400]">Section 03</span>
+              <h3 class="text-2xl sm:text-3xl font-black text-white mt-1" data-i18n="matrix_title">Benefit Matrix & Growth Ladder</h3>
+              <p class="mt-2 text-sm text-white/60" data-i18n="matrix_desc">
+                Four progressive milestone tiers designed to reward your community scale and volume growth.
+              </p>
             </div>
+
+            <div class="grid gap-4">
+              
+              <!-- M1 Card -->
+              <div class="hub-card p-6 border border-[#ffd400]/25 bg-gradient-to-r from-[#ffd400]/5 to-transparent">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-3">
+                    <span class="rounded-xl bg-[#ffd400] px-3 py-1 text-sm font-black text-black" data-i18n="m1_badge">M1</span>
+                    <h4 class="text-lg font-black text-white" data-i18n="m1_title">Launch Access</h4>
+                  </div>
+                  <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-[#ffd400]" data-i18n="m1_cond">Complete affiliate onboarding</span>
+                </div>
+                <ul class="mt-4 space-y-2 text-xs sm:text-sm text-white/75">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-[#ffd400] mt-1"></i>
+                    <span data-i18n="m1_d1">Commission potential around 50%-60% with instant activation.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-[#ffd400] mt-1"></i>
+                    <span data-i18n="m1_d2">Official exposure through LBank MCN Hub channels.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-[#ffd400] mt-1"></i>
+                    <span data-i18n="m1_d3">1-on-1 social media diagnosis & conversion strategy consultation.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- M2 Card -->
+              <div class="hub-card p-6 border border-[#e8ff00]/25 bg-gradient-to-r from-[#e8ff00]/5 to-transparent">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-3">
+                    <span class="rounded-xl bg-[#e8ff00] px-3 py-1 text-sm font-black text-black" data-i18n="m2_badge">M2</span>
+                    <h4 class="text-lg font-black text-white" data-i18n="m2_title">Client Exclusive</h4>
+                  </div>
+                  <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-[#e8ff00]" data-i18n="m2_cond">Active traders & weekly review</span>
+                </div>
+                <ul class="mt-4 space-y-2 text-xs sm:text-sm text-white/75">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-[#e8ff00] mt-1"></i>
+                    <span data-i18n="m2_d1">High-quality active clients receive customized LBank gift & merch packs.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-[#e8ff00] mt-1"></i>
+                    <span data-i18n="m2_d2">Synchronized reward plans for matching high-value client trading growth.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- M3 Card -->
+              <div class="hub-card p-6 border border-cyan-400/25 bg-gradient-to-r from-cyan-400/5 to-transparent">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-3">
+                    <span class="rounded-xl bg-cyan-400 px-3 py-1 text-sm font-black text-black" data-i18n="m3_badge">M3</span>
+                    <h4 class="text-lg font-black text-white" data-i18n="m3_title">New User Ladder (FTDs)</h4>
+                  </div>
+                  <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-cyan-400" data-i18n="m3_cond">20 / 50 / 100 FTD Milestones</span>
+                </div>
+                <ul class="mt-4 space-y-2 text-xs sm:text-sm text-white/75">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                    <span data-i18n="m3_d1">20 FTDs: 1 customized campaign opportunity + custom official poster.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                    <span data-i18n="m3_d2">50 FTDs: 2 customized campaigns + dedicated design support + official case showcase.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                    <span data-i18n="m3_d3">100 FTDs: Unlimited quarterly campaigns + official co-marketing + higher commission review.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- M4 Card -->
+              <div class="hub-card p-6 border border-emerald-400/25 bg-gradient-to-r from-emerald-400/5 to-transparent">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-3">
+                    <span class="rounded-xl bg-emerald-400 px-3 py-1 text-sm font-black text-black" data-i18n="m4_badge">M4</span>
+                    <h4 class="text-lg font-black text-white" data-i18n="m4_title">Scale Ladder (Volume)</h4>
+                  </div>
+                  <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-emerald-400" data-i18n="m4_cond">1M / 5M / 10M Volume Milestones</span>
+                </div>
+                <ul class="mt-4 space-y-2 text-xs sm:text-sm text-white/75">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                    <span data-i18n="m4_d1">1M Volume: Merchandise pack + community cash competition + starter deal eligibility ($50 cash + commission).</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                    <span data-i18n="m4_d2">5M Volume: Exclusive community lucky draw + cash incentive plan + media exposure.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                    <span data-i18n="m4_d3">10M+ Volume: Top-tier cash incentive qualification + bespoke VIP upfront deal negotiation.</span>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
           </div>
 
-        </div>
+          <!-- TAB 4: EARNINGS CALCULATOR & UPFRONT POLICY -->
+          <div id="tab-panel-4" class="tab-panel">
+            
+            <div class="mb-6">
+              <span class="text-xs font-black uppercase tracking-[0.2em] text-[#ffd400]">Section 04</span>
+              <h3 class="text-2xl sm:text-3xl font-black text-white mt-1" data-i18n="calc_title">KOC Volume & Earnings Simulator</h3>
+              <p class="mt-2 text-sm text-white/60" data-i18n="calc_desc">
+                See your estimated monthly net commission based on 60% rebate ($240 - $300 per 1M volume).
+              </p>
+            </div>
 
-        <!-- Result Card (5 Cols) -->
-        <div class="lg:col-span-5 bg-gradient-to-b from-lbank-card via-[#111622] to-[#090D14] border-2 border-lbank-yellow/50 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl relative w-full">
-          
-          <div data-i18n="s3_card_badge" class="absolute -top-3 left-6 sm:left-8 bg-lbank-yellow text-black text-[10px] sm:text-xs font-extrabold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase tracking-wider shadow">
-            60% Rebate Net Earnings
+            <!-- Interactive Slider Card -->
+            <div class="hub-card p-6 sm:p-8">
+              
+              <div class="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <p class="text-xs font-black uppercase tracking-[0.16em] text-[#ffd400]" data-i18n="calc_vol_label">Monthly Trading Volume</p>
+                  <p id="volume-val" class="mt-1 text-3xl sm:text-4xl font-black text-white">$1,000,000</p>
+                </div>
+                <div class="rounded-2xl border border-[#e8ff00]/30 bg-[#e8ff00]/10 px-5 py-3 text-right">
+                  <p class="text-[11px] font-black uppercase tracking-[0.16em] text-[#e8ff00]" data-i18n="calc_est_label">Estimated Commission</p>
+                  <p id="total-earnings" class="mt-1 text-2xl sm:text-3xl font-black text-[#e8ff00]">$240 - $300</p>
+                </div>
+              </div>
+
+              <!-- Slider Control -->
+              <div class="mt-8">
+                <input id="volume-range" type="range" min="500000" max="10000000" step="500000" value="1000000">
+                <div class="mt-3 flex justify-between text-[11px] font-bold text-white/40">
+                  <span>$500K</span>
+                  <span>$2.5M</span>
+                  <span>$5M</span>
+                  <span>$7.5M</span>
+                  <span>$10M+</span>
+                </div>
+              </div>
+
+              <!-- Upfront Policy Note (Transparent and Direct) -->
+              <div class="mt-8 rounded-2xl border border-[#ffd400]/25 bg-[#ffd400]/10 p-5 text-white">
+                <p class="text-xs sm:text-sm font-semibold leading-relaxed text-white/90" data-i18n="calc_upfront_note">
+                  💡 Upfront Policy: We work with real partners, not short-term advance hunters. Deliver your initial 1M volume, collect your instant $50 cash + commission, and we'll gladly negotiate custom upfront budgets and VIP tiers!
+                </p>
+              </div>
+
+            </div>
+
           </div>
-
-          <div class="mt-3 sm:mt-4 mb-5 sm:mb-6">
-            <span data-i18n="s3_card_label" class="text-xs text-slate-400 font-medium block">Your Monthly Estimated Commission at this Volume:</span>
-            <div class="flex items-baseline space-x-2 mt-1">
-              <span id="total-earnings" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-lbank-yellow via-amber-300 to-white font-display">
-                $240 - $300
-              </span>
-              <span class="text-xs text-slate-400 font-bold uppercase">USDT</span>
-            </div>
-            <p class="text-xs text-emerald-400 font-semibold mt-1.5 flex items-center space-x-1.5">
-              <i class="fa-solid fa-circle-check text-xs"></i>
-              <span data-i18n="s3_card_sub">60% Standard Commission Rebate</span>
-            </p>
-          </div>
-
-          <!-- Breakdown Details -->
-          <div class="bg-black/50 rounded-xl sm:rounded-2xl p-3.5 sm:p-4 border border-slate-800 space-y-2.5 sm:space-y-3 mb-5 sm:mb-6">
-            <div class="flex justify-between items-center text-xs">
-              <span data-i18n="s3_stat_vol" class="text-slate-400">Selected Volume:</span>
-              <span id="stat-volume" class="text-white font-bold text-xs sm:text-sm">$1,000,000 USD</span>
-            </div>
-            <div class="flex justify-between items-center text-xs">
-              <span data-i18n="s3_stat_rate" class="text-slate-400">Rebate Rate:</span>
-              <span data-i18n="s3_stat_rate_val" class="text-lbank-yellow font-bold text-xs sm:text-sm">60% Rebate</span>
-            </div>
-            <div class="flex justify-between items-center text-xs pt-2 border-t border-slate-800">
-              <span data-i18n="s3_stat_earn" class="text-slate-400">Commission Earnings:</span>
-              <span id="commission-share" class="text-emerald-400 font-bold text-xs sm:text-sm">$240 - $300 USDT</span>
-            </div>
-            <div class="flex justify-between items-center text-xs">
-              <span data-i18n="s3_stat_mult" class="text-slate-400">Multiplier per Volume:</span>
-              <span id="subsequent-earn" class="text-slate-300 font-semibold text-xs">$240 - $300 on every 1M</span>
-            </div>
-          </div>
-
-          <!-- Bottom Assurance Box -->
-          <div class="text-xs text-slate-300 bg-amber-500/10 border border-amber-500/25 p-3.5 sm:p-4 rounded-xl leading-relaxed mb-5 sm:mb-6">
-            <div class="flex items-center space-x-1.5 text-lbank-yellow font-bold mb-1">
-              <i class="fa-solid fa-handshake"></i>
-              <span data-i18n="s3_assurance_title">The Door for Better Deals is Always Open:</span>
-            </div>
-            <p data-i18n-html="s3_assurance_desc"><strong class="text-white">We are always open to better deals for high volume and top performance!</strong> For every KOC who demonstrates genuine traction, we are ready to renegotiate and offer exclusive VIP perks.</p>
-          </div>
-
-          <!-- CTA inside result -->
-          <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="w-full py-3 sm:py-3.5 rounded-xl bg-lbank-yellow hover:bg-lbank-hover text-black font-extrabold text-xs sm:text-sm flex items-center justify-center space-x-2 transition-all shadow-lg shadow-yellow-500/20">
-            <i class="fa-brands fa-telegram text-base"></i>
-            <span data-i18n="s3_btn_koc">Become KOC Now (@arifm1)</span>
-          </a>
 
         </div>
 
       </div>
 
-    </div>
-  </section>
+    </section>
 
-  <!-- SECTION 4: LBANK BONUS CENTER & NEW USER CAMPAIGNS -->
-  <section id="bonuses" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-lbank-border w-full">
-    
-    <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
-      <div>
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-lbank-yellow text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-3">
-          <i class="fa-solid fa-bullhorn text-[10px] sm:text-xs"></i>
-          <span data-i18n="s4_badge">4. Campaigns & Welcome Package</span>
-        </div>
-        <h2 data-i18n="s4_title" class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight break-words">
-          What Do Your Referred Users Get?
-        </h2>
-        <p data-i18n="s4_desc" class="text-slate-400 text-xs sm:text-sm lg:text-base mt-2 max-w-2xl break-words">
-          When you invite your community to LBank, a comprehensive rewards center is waiting for them.
-        </p>
-      </div>
-
-      <div class="mt-2 md:mt-0">
-        <a href="https://www.lbank.com/bonus/center" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-xs font-bold px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-lbank-yellow/10 hover:bg-lbank-yellow/20 text-lbank-yellow border border-lbank-yellow/40 transition-all">
-          <span data-i18n="s4_btn_center">Open Official LBank Bonus Center</span>
-          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- Campaigns Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-      
-      <!-- Card 1: Kayıt & KYC -->
-      <div class="bg-lbank-card border border-lbank-border rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-lbank-yellow/40 transition-all group">
-        <div>
-          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-lbank-yellow text-lg sm:text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-id-card"></i>
-          </div>
-          <span data-i18n="s4_c1_step" class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Step 1: Register & KYC</span>
-          <h3 data-i18n="s4_c1_title" class="text-base sm:text-lg font-bold text-white mt-1 mb-2">Welcome Voucher Package</h3>
-          <p data-i18n="s4_c1_desc" class="text-xs text-slate-400 leading-relaxed">
-            Every newly registered user who completes basic identity verification (KYC) unlocks fee discount coupons and futures trial funds.
-          </p>
-          <div class="mt-4 pt-4 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
-            <div class="flex items-center justify-between">
-              <span data-i18n="s4_c1_k1">Registration Bonus:</span>
-              <span data-i18n="s4_c1_v1" class="text-white font-semibold">10 USDT Voucher</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span data-i18n="s4_c1_k2">KYC Completion:</span>
-              <span data-i18n="s4_c1_v2" class="text-white font-semibold">20 USDT Bonus</span>
-            </div>
-          </div>
-        </div>
-        <div class="mt-5 sm:mt-6">
-          <span data-i18n="s4_c1_tag" class="block text-center text-[11px] text-slate-400 bg-slate-900 py-1.5 rounded-lg border border-slate-800">Zero-Risk Start</span>
-        </div>
-      </div>
-
-      <!-- Card 2: İlk Yatırım (Deposit) Bonusu -->
-      <div class="bg-lbank-card border border-lbank-yellow/30 rounded-2xl p-5 sm:p-6 flex flex-col justify-between relative shadow-lg shadow-yellow-500/5 group">
-        <div data-i18n="s4_c2_badge" class="absolute -top-2.5 right-4 bg-lbank-yellow text-black text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
-          Most Popular
-        </div>
-        <div>
-          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-lbank-yellow text-lg sm:text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-money-bill-transfer"></i>
-          </div>
-          <span data-i18n="s4_c2_step" class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Step 2: First Deposit</span>
-          <h3 data-i18n="s4_c2_title" class="text-base sm:text-lg font-bold text-white mt-1 mb-2">Tiered Deposit Bonus</h3>
-          <p data-i18n="s4_c2_desc" class="text-xs text-slate-400 leading-relaxed">
-            Graduated futures bonus funds and fee cashback assigned based on the user's initial deposit tier.
-          </p>
-          <div class="mt-4 pt-4 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
-            <div class="flex items-center justify-between">
-              <span data-i18n="s4_c2_k1">Deposit 100 USDT:</span>
-              <span data-i18n="s4_c2_v1" class="text-lbank-yellow font-bold">+20 USDT Futures</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span data-i18n="s4_c2_k2">Deposit 500 USDT:</span>
-              <span data-i18n="s4_c2_v2" class="text-lbank-yellow font-bold">+50 USDT Futures</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span data-i18n="s4_c2_k3">Deposit 1,000+ USDT:</span>
-              <span data-i18n="s4_c2_v3" class="text-lbank-yellow font-bold">+150 USDT + VIP 1</span>
-            </div>
-          </div>
-        </div>
-        <div class="mt-5 sm:mt-6">
-          <span data-i18n="s4_c2_tag" class="block text-center text-[11px] text-lbank-yellow bg-yellow-500/10 py-1.5 rounded-lg border border-yellow-500/20 font-semibold">All Crypto & USDT Valid</span>
-        </div>
-      </div>
-
-      <!-- Card 3: İşlem Hacmi Görevleri -->
-      <div class="bg-lbank-card border border-lbank-border rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-lbank-yellow/40 transition-all group">
-        <div>
-          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-lbank-yellow text-lg sm:text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-chart-line"></i>
-          </div>
-          <span data-i18n="s4_c3_step" class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Step 3: Trading Missions</span>
-          <h3 data-i18n="s4_c3_title" class="text-base sm:text-lg font-bold text-white mt-1 mb-2">Volume Reward Pool</h3>
-          <p data-i18n="s4_c3_desc" class="text-xs text-slate-400 leading-relaxed">
-            Traders reaching specific spot and futures volume milestones unlock extra cash vouchers and reward funds.
-          </p>
-          <div class="mt-4 pt-4 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
-            <div class="flex items-center justify-between">
-              <span data-i18n="s4_c3_k1">$10,000 Futures Volume:</span>
-              <span data-i18n="s4_c3_v1" class="text-white font-semibold">15 USDT Funds</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span data-i18n="s4_c3_k2">$50,000 Futures Volume:</span>
-              <span data-i18n="s4_c3_v2" class="text-white font-semibold">50 USDT Funds</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span data-i18n="s4_c3_k3">$200,000 Futures Volume:</span>
-              <span data-i18n="s4_c3_v3" class="text-white font-semibold">200 USDT Funds</span>
-            </div>
-          </div>
-        </div>
-        <div class="mt-5 sm:mt-6">
-          <span data-i18n="s4_c3_tag" class="block text-center text-[11px] text-slate-400 bg-slate-900 py-1.5 rounded-lg border border-slate-800">Automatic Distribution</span>
-        </div>
-      </div>
-
-      <!-- Card 4: Gizemli Kutu & Airdrop -->
-      <div class="bg-lbank-card border border-lbank-border rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-lbank-yellow/40 transition-all group">
-        <div>
-          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center text-lbank-yellow text-lg sm:text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-box-open"></i>
-          </div>
-          <span data-i18n="s4_c4_step" class="text-[11px] font-bold uppercase tracking-wider text-lbank-yellow">Extra: Mystery Boxes</span>
-          <h3 data-i18n="s4_c4_title" class="text-base sm:text-lg font-bold text-white mt-1 mb-2">Mystery Box & Airdrop</h3>
-          <p data-i18n="s4_c4_desc" class="text-xs text-slate-400 leading-relaxed">
-            Special Mystery Boxes available exclusively to users signing up via KOC referral codes with rewards up to 1,000 USDT.
-          </p>
-          <div class="mt-4 pt-4 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
-            <div class="flex items-center justify-between">
-              <span data-i18n="s4_c4_k1">Maximum Box Prize:</span>
-              <span data-i18n="s4_c4_v1" class="text-lbank-yellow font-bold">1,000 USDT</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span data-i18n="s4_c4_k2">New Token Airdrops:</span>
-              <span data-i18n="s4_c4_v2" class="text-white font-semibold">Weekly Regular</span>
-            </div>
-          </div>
-        </div>
-        <div class="mt-5 sm:mt-6">
-          <span data-i18n="s4_c4_tag" class="block text-center text-[11px] text-slate-400 bg-slate-900 py-1.5 rounded-lg border border-slate-800">High Attraction for Community</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Official Center Banner -->
-    <div class="mt-6 sm:mt-8 bg-gradient-to-r from-lbank-card via-slate-900 to-lbank-card border border-slate-800 rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center space-x-3 sm:space-x-4 text-center sm:text-left">
-        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-lbank-yellow/20 flex items-center justify-center text-lbank-yellow text-xl sm:text-2xl shrink-0 mx-auto sm:mx-0">
-          <i class="fa-solid fa-globe"></i>
-        </div>
-        <div>
-          <h4 data-i18n="s4_banner_title" class="font-bold text-white text-sm sm:text-base">Track All Active Campaigns Live</h4>
-          <p data-i18n="s4_banner_desc" class="text-xs text-slate-400 mt-0.5">LBank Bonus Center adds new airdrops, trading tournaments and deposit events every single week.</p>
-        </div>
-      </div>
-      <a href="https://www.lbank.com/bonus/center" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-4 sm:px-5 py-2.5 rounded-xl bg-white hover:bg-slate-200 text-black font-bold text-xs shrink-0 flex items-center justify-center space-x-2 transition-all">
-        <span>lbank.com/bonus/center</span>
-        <i class="fa-solid fa-external-link text-[10px]"></i>
-      </a>
-    </div>
-
-  </section>
-
-  <!-- SECTION 5: LBANK GROWTH PROGRAM -->
-  <section id="growth-program" class="py-12 sm:py-20 bg-gradient-to-b from-[#080B10] via-[#0E131E] to-[#080B10] border-b border-lbank-border relative overflow-hidden w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-      
-      <!-- Badge -->
-      <div class="inline-flex items-center space-x-2 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-lbank-yellow/10 border border-lbank-yellow/30 text-lbank-yellow text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4 sm:mb-6 max-w-full">
-        <i class="fa-solid fa-shield-halved text-xs shrink-0"></i>
-        <span data-i18n="s5_badge" class="break-words">5. LBank Official Partnership & KOC Growth Program</span>
-      </div>
-
-      <!-- Main Headline -->
-      <h2 data-i18n-html="s5_title" class="text-xl sm:text-3xl lg:text-5xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight mb-4 sm:mb-6 break-words">
-        Not Short-Term Demands, <br class="hidden sm:inline" />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-lbank-yellow via-amber-300 to-yellow-200">
-          A Sustainable & Profitable Partnership!
-        </span>
-      </h2>
-
-      <!-- Subtitle -->
-      <p data-i18n-html="s5_desc" class="text-xs sm:text-base lg:text-lg text-slate-400 max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed break-words">
-        Discover official <strong class="text-slate-200">LBank Welcome & Deposit Bonuses</strong> for your community, transparent 
-        <strong class="text-slate-200">Milestone Rewards</strong>, and our clear manifesto on performance-based growth.
-      </p>
-
-      <!-- Quick Highlights Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8 sm:mb-12">
-        <div class="bg-lbank-card/80 border border-lbank-border p-4 sm:p-5 rounded-2xl backdrop-blur-sm hover:border-lbank-yellow/40 transition-all text-left">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-lbank-yellow text-base sm:text-lg mb-2.5 sm:mb-3">
-            <i class="fa-solid fa-gift"></i>
-          </div>
-          <h3 data-i18n="s5_c1_title" class="font-bold text-white text-sm sm:text-base">Generous User Bonuses</h3>
-          <p data-i18n="s5_c1_desc" class="text-xs text-slate-400 mt-1">Multi-layered voucher coupons and trial funds for registration, KYC, and first deposits.</p>
-        </div>
-
-        <div class="bg-lbank-card/80 border border-lbank-border p-4 sm:p-5 rounded-2xl backdrop-blur-sm hover:border-lbank-yellow/40 transition-all text-left border-lbank-yellow/20 relative">
-          <div data-i18n="s5_c2_badge" class="absolute -top-2.5 right-4 bg-lbank-yellow text-black text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">
-            Starter Deal
-          </div>
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-lbank-yellow text-base sm:text-lg mb-2.5 sm:mb-3">
-            <i class="fa-solid fa-coins"></i>
-          </div>
-          <h3 data-i18n="s5_c2_title" class="font-bold text-white text-sm sm:text-base">5 Users + 1M Volume</h3>
-          <p data-i18n="s5_c2_desc" class="text-xs text-slate-400 mt-1">$240 - $300 commission + instant $50 cash! Then keep earning $240 - $300 on every 1M!</p>
-        </div>
-
-        <div class="bg-lbank-card/80 border border-lbank-border p-4 sm:p-5 rounded-2xl backdrop-blur-sm hover:border-lbank-yellow/40 transition-all text-left">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-lbank-yellow text-base sm:text-lg mb-2.5 sm:mb-3">
-            <i class="fa-solid fa-handshake-simple"></i>
-          </div>
-          <h3 data-i18n="s5_c3_title" class="font-bold text-white text-sm sm:text-base">Transparent & Long-Term</h3>
-          <p data-i18n="s5_c3_desc" class="text-xs text-slate-400 mt-1">Unlimited rewards for real value instead of one-time advances on unseen results.</p>
-        </div>
-      </div>
-
-      <!-- Action CTAs -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto sm:max-w-none">
-        <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-xl bg-lbank-yellow hover:bg-lbank-hover text-black font-bold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-lg shadow-yellow-500/20 transition-all">
-          <i class="fa-brands fa-telegram text-base"></i>
-          <span data-i18n="s5_btn_tg">Start via Telegram (@arifm1)</span>
-        </a>
-        <a href="#bonuses" class="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-white font-semibold text-xs sm:text-sm border border-slate-700 flex items-center justify-center space-x-2 transition-all">
-          <i class="fa-solid fa-gift text-lbank-yellow"></i>
-          <span data-i18n="s5_btn_bonuses">View User Campaigns</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SECTION 6: CUSTOM CAMPAIGNS & COMPETITIONS FOR REFERRALS -->
-  <section id="custom-campaigns" class="py-12 sm:py-20 bg-gradient-to-b from-[#080B10] via-[#0E131E] to-[#080B10] border-b border-lbank-border relative overflow-hidden w-full">
-    <!-- Glow effect -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[300px] bg-lbank-yellow/5 rounded-full blur-[120px] pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-lbank-yellow/10 border border-lbank-yellow/30 text-lbank-yellow text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-3 sm:mb-4 max-w-full">
-          <i class="fa-solid fa-trophy text-[10px] sm:text-xs shrink-0"></i>
-          <span data-i18n="s6_badge" class="break-words">6. Volume Scaling & Custom Support</span>
-        </div>
-        <h2 data-i18n="s6_title" class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight break-words">
-          You Are Never Alone in Scaling Volume!
-        </h2>
-        <p data-i18n-html="s6_desc" class="text-slate-300 text-xs sm:text-base lg:text-lg mt-3 sm:mt-4 leading-relaxed break-words">
-          We actively assist you by hosting <strong class="text-lbank-yellow">custom campaigns and trading competitions exclusively for your referrals</strong>, making hitting target volume fast and effortless!
-        </p>
-      </div>
-
-      <!-- Feature Grid: 2 Main Supports -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+    <!-- DIRECT CONTACT CTA SECTION -->
+    <section class="relative overflow-hidden border-t border-[#ffd400]/20 bg-[#0c0e06] px-4 py-12 sm:px-8 sm:py-16">
+      <div class="mx-auto max-w-5xl rounded-[32px] border border-[#ffd400]/30 bg-gradient-to-b from-[#ffd400]/10 to-transparent p-6 sm:p-12 text-center backdrop-blur shadow-2xl">
         
-        <!-- Card 1: Custom Trading Yarışması -->
-        <div class="bg-lbank-card/90 border border-lbank-border rounded-2xl sm:rounded-3xl p-5 sm:p-7 relative hover:border-lbank-yellow/50 transition-all group">
-          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center text-lbank-yellow text-xl sm:text-2xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-ranking-star"></i>
-          </div>
-          <span data-i18n="s6_c1_tag" class="text-xs font-bold uppercase tracking-wider text-lbank-yellow">1. Custom Tournaments</span>
-          <h3 data-i18n="s6_c1_title" class="text-lg sm:text-xl font-bold text-white mt-1 mb-2 sm:mb-3">Exclusive Trading Competition for Your Community</h3>
-          <p data-i18n-html="s6_c1_desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
-            We launch a tailored <strong class="text-slate-200">"LBank x [Your Community Name] Tournament"</strong>. The entire prize pool is 100% funded by LBank.
-          </p>
-          <div class="p-3 sm:p-3.5 rounded-xl bg-black/50 border border-slate-800 text-xs text-slate-300 flex items-center space-x-2">
-            <i class="fa-solid fa-circle-check text-emerald-400 shrink-0"></i>
-            <span data-i18n="s6_c1_footer">Your members compete, your trading volume soars!</span>
-          </div>
-        </div>
+        <span class="inline-flex rounded-full bg-[#ffd400] px-3.5 py-1 text-xs font-black uppercase text-black">Fast Onboarding</span>
+        <h2 class="mt-4 text-3xl sm:text-5xl font-black text-white" data-i18n="contact_title">Get Started in Minutes</h2>
+        <p class="mt-3 mx-auto max-w-xl text-xs sm:text-sm text-white/65 leading-relaxed" data-i18n="contact_desc">
+          Contact our Business Development team directly to activate your partnership with zero restrictions.
+        </p>
 
-        <!-- Card 2: Pazarlama & Görsel Materyal Desteği -->
-        <div class="bg-lbank-card/90 border border-lbank-border rounded-2xl sm:rounded-3xl p-5 sm:p-7 relative hover:border-lbank-yellow/50 transition-all group">
-          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center text-lbank-yellow text-xl sm:text-2xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-bullhorn"></i>
-          </div>
-          <span data-i18n="s6_c2_tag" class="text-xs font-bold uppercase tracking-wider text-lbank-yellow">2. Full Marketing Support</span>
-          <h3 data-i18n="s6_c2_title" class="text-lg sm:text-xl font-bold text-white mt-1 mb-2 sm:mb-3">Custom Banners, Graphics & Copywriting</h3>
-          <p data-i18n="s6_c2_desc" class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
-            Our official design team creates professional channel graphics, banners, and announcement texts with your logo for free.
-          </p>
-          <div class="p-3 sm:p-3.5 rounded-xl bg-black/50 border border-slate-800 text-xs text-slate-300 flex items-center space-x-2">
-            <i class="fa-solid fa-circle-check text-emerald-400 shrink-0"></i>
-            <span data-i18n="s6_c2_footer">Run high-conversion campaigns with zero extra effort!</span>
-          </div>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+          <a href="https://t.me/arifm1" target="_blank" rel="noreferrer" class="inline-flex min-h-12 items-center justify-center rounded-full bg-[#ffd400] px-6 sm:px-8 py-3 text-xs sm:text-sm font-black uppercase tracking-[0.08em] text-black transition hover:bg-[#e8ff00] hover:shadow-[0_0_25px_rgba(232,255,0,0.6)]">
+            <i class="fa-brands fa-telegram text-base mr-2"></i>
+            <span data-i18n="contact_tg_btn">Telegram: @arifm1</span>
+          </a>
+          <a href="https://x.com/businessdevg" target="_blank" rel="noreferrer" class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 sm:px-8 py-3 text-xs sm:text-sm font-black uppercase tracking-[0.08em] text-white transition hover:border-[#ffd400] hover:text-[#ffd400]">
+            <i class="fa-brands fa-x-twitter text-base mr-2"></i>
+            <span data-i18n="contact_x_btn">X (Twitter): @businessdevg</span>
+          </a>
+          <a href="https://www.lbank.com/bonus-center/" target="_blank" rel="noreferrer" class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 sm:px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/10 hover:text-white">
+            <i class="fa-solid fa-gift text-sm mr-2 text-[#ffd400]"></i>
+            <span data-i18n="contact_bonus_btn">Official Bonus Center</span>
+          </a>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="border-t border-lbank-border bg-[#05070B] py-8 sm:py-10 text-center text-xs text-slate-500 w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-      <div class="flex items-center justify-center space-x-2.5">
-        <div class="w-6 h-6 rounded-lg bg-lbank-yellow text-black flex items-center justify-center font-bold text-xs shrink-0">L</div>
-        <span class="font-bold text-slate-300">LBank BD & KOC Strategic Portal</span>
+  <footer class="border-t border-white/10 bg-[#080904] px-4 py-8 sm:px-8 text-center text-xs text-white/50">
+    <div class="mx-auto flex max-w-7xl flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="lbank-logo.png" alt="LBank" class="h-6 w-auto object-contain opacity-75">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-white/60">Official KOC Portal</span>
       </div>
-      <p data-i18n="footer_desc" class="max-w-xl mx-auto text-xs leading-relaxed break-words px-2">
-        This portal is designed for LBank Business Development (BD), KOCs and affiliate partners to present transparent collaboration principles and official rewards.
-      </p>
-      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-slate-400 pt-2 text-xs">
-        <a href="https://www.lbank.com" target="_blank" class="hover:text-lbank-yellow"><span data-i18n="footer_official">LBank Official Site</span></a>
-        <a href="https://www.lbank.com/bonus/center" target="_blank" class="hover:text-lbank-yellow"><span data-i18n="footer_center">Bonus Center</span></a>
-        <a href="https://t.me/arifm1" target="_blank" rel="noopener noreferrer" class="hover:text-lbank-yellow flex items-center space-x-1.5"><i class="fa-brands fa-telegram text-[#229ED9]"></i><span data-i18n="footer_tg">Telegram: @arifm1</span></a>
-        <a href="https://x.com/businessdevg" target="_blank" rel="noopener noreferrer" class="hover:text-lbank-yellow flex items-center space-x-1.5"><i class="fa-brands fa-x-twitter text-white"></i><span data-i18n="footer_x">X: @businessdevg</span></a>
-      </div>
-      <p data-i18n="footer_rights" class="text-[11px] text-slate-600">© 2026 LBank Exchange. All Rights Reserved.</p>
+      <p data-i18n="footer_rights">© 2026 LBank Exchange. All Rights Reserved.</p>
     </div>
   </footer>
 

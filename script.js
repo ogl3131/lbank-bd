@@ -1,6 +1,5 @@
-// LBank BD & KOC Portal Interactive Scripts
-// Multi-Language Localization System & %60 Rebate Volume Simulator
-// Default Primary Language: English (en)
+// LBank KOC & MCN Hub - Interactive JavaScript
+// Multi-Language Localization System & Directory Tab Navigation
 
 let currentLang = 'en';
 
@@ -9,15 +8,51 @@ document.addEventListener('DOMContentLoaded', () => {
   initCalculator();
 });
 
-// --- Multi-Language System ---
+// --- Tab Switching Logic ---
+function switchTab(tabId) {
+  // Update Tab Buttons in Sidebar
+  for (let i = 1; i <= 4; i++) {
+    const btn = document.getElementById(`tab-btn-${i}`);
+    const panel = document.getElementById(`tab-panel-${i}`);
+    
+    if (btn) {
+      if (i === tabId) {
+        btn.classList.add('active');
+        btn.classList.remove('text-white/70', 'hover:bg-white/8', 'hover:text-white');
+      } else {
+        btn.classList.remove('active');
+        btn.classList.add('text-white/70', 'hover:bg-white/8', 'hover:text-white');
+      }
+    }
+
+    if (panel) {
+      if (i === tabId) {
+        panel.classList.add('active');
+      } else {
+        panel.classList.remove('active');
+      }
+    }
+  }
+
+  // If clicked from top header/nav or on small screens, smoothly bring directory into view
+  const hubSection = document.getElementById('hub');
+  if (hubSection && window.scrollY > hubSection.offsetTop + 200 || window.innerWidth < 1024) {
+    hubSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Make switchTab accessible globally
+window.switchTab = switchTab;
+
+// --- Multi-Language Localization System ---
 function initLanguage() {
   const supportedLangs = ['en', 'tr', 'hi', 'ur', 'th', 'id'];
 
-  // 1. Check URL Parameter: ?lang=en / ?lang=hi / ?lang=ur / ?lang=tr etc.
+  // 1. Check URL Parameter: ?lang=en / ?lang=tr / ?lang=hi etc.
   const urlParams = new URLSearchParams(window.location.search);
   const paramLang = urlParams.get('lang');
 
-  // 2. Check localStorage (if visitor explicitly clicked a language before)
+  // 2. Check localStorage
   const storedLang = localStorage.getItem('lbank_koc_lang');
 
   if (paramLang && supportedLangs.includes(paramLang.toLowerCase())) {
@@ -25,14 +60,11 @@ function initLanguage() {
   } else if (storedLang && supportedLangs.includes(storedLang)) {
     currentLang = storedLang;
   } else {
-    // Default starting language is always English!
+    // Default starting language is English
     currentLang = 'en';
   }
 
-  // Bind dropdown events
   setupLangDropdown();
-
-  // Apply initial language
   setLanguage(currentLang);
 }
 
@@ -45,7 +77,7 @@ function setLanguage(lang) {
   localStorage.setItem('lbank_koc_lang', lang);
   document.documentElement.lang = lang;
 
-  // Urdu RTL & typography enhancement
+  // Urdu RTL Support
   if (lang === 'ur') {
     document.body.classList.add('lang-ur');
     document.documentElement.setAttribute('dir', 'rtl');
@@ -61,7 +93,7 @@ function setLanguage(lang) {
     document.title = dict.page_title;
   }
 
-  // Update plain text elements
+  // Update Elements with data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key] !== undefined) {
@@ -69,7 +101,7 @@ function setLanguage(lang) {
     }
   });
 
-  // Update HTML elements
+  // Update Elements with data-i18n-html
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
     if (dict[key] !== undefined) {
@@ -77,28 +109,23 @@ function setLanguage(lang) {
     }
   });
 
-  // Update Language Selector button display
+  // Update Dropdown Button Label
   const currentLangFlag = document.getElementById('current-lang-flag');
   const currentLangName = document.getElementById('current-lang-name');
   if (currentLangFlag) currentLangFlag.textContent = dict.lang_flag || '🌐';
   if (currentLangName) currentLangName.textContent = dict.lang_name || lang.toUpperCase();
 
-  // Highlight active language item in dropdown
+  // Highlight Selected Option
   document.querySelectorAll('.lang-option').forEach(opt => {
     const optLang = opt.getAttribute('data-lang');
     if (optLang === lang) {
-      opt.classList.add('bg-lbank-yellow/15', 'text-lbank-yellow', 'font-bold');
-      opt.classList.remove('text-slate-300');
+      opt.classList.add('bg-[#ffd400]/20', 'text-[#ffd400]', 'font-bold');
+      opt.classList.remove('text-white');
     } else {
-      opt.classList.remove('bg-lbank-yellow/15', 'text-lbank-yellow', 'font-bold');
-      opt.classList.add('text-slate-300');
+      opt.classList.remove('bg-[#ffd400]/20', 'text-[#ffd400]', 'font-bold');
+      opt.classList.add('text-white');
     }
   });
-
-  // Refresh calculator dynamic values in current language
-  if (typeof window.recalculateSimulator === 'function') {
-    window.recalculateSimulator();
-  }
 }
 
 function setupLangDropdown() {
@@ -131,67 +158,32 @@ function setupLangDropdown() {
   });
 }
 
-// --- Volume-Only Simulator Logic ---
+// --- Volume Earnings Simulator ---
 function initCalculator() {
   const volumeRange = document.getElementById('volume-range');
   const volumeVal = document.getElementById('volume-val');
   const totalEarnings = document.getElementById('total-earnings');
-  const commissionShare = document.getElementById('commission-share');
-  const statVolume = document.getElementById('stat-volume');
-  const subsequentEarn = document.getElementById('subsequent-earn');
 
-  window.recalculateSimulator = function() {
+  function calculate() {
     if (!volumeRange) return;
-
     const volume = parseInt(volumeRange.value, 10);
 
-    // Update Slider Label
-    if (volumeVal) volumeVal.textContent = `$${volume.toLocaleString('en-US')}`;
+    if (volumeVal) {
+      volumeVal.textContent = `$${volume.toLocaleString('en-US')}`;
+    }
 
-    // Calculation based on standard 60% Rebate:
-    // 1M volume brings $240 - $300 USDT net commission
+    // Standard 60% Rebate: ~$240 - $300 per 1M volume
     const volumeInM = volume / 1000000;
     const minEarn = Math.round(volumeInM * 240);
     const maxEarn = Math.round(volumeInM * 300);
 
-    // Update Result Card
     if (totalEarnings) {
       totalEarnings.textContent = `$${minEarn.toLocaleString('en-US')} - $${maxEarn.toLocaleString('en-US')}`;
     }
-
-    if (statVolume) {
-      statVolume.textContent = `$${volume.toLocaleString('en-US')} USD`;
-    }
-
-    if (commissionShare) {
-      commissionShare.textContent = `$${minEarn.toLocaleString('en-US')} - $${maxEarn.toLocaleString('en-US')} USDT`;
-    }
-
-    if (subsequentEarn) {
-      const dict = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[currentLang]) 
-        ? TRANSLATIONS[currentLang] 
-        : null;
-
-      if (dict) {
-        if (volumeInM === 1) {
-          subsequentEarn.textContent = dict.s3_mult_1m || '$240 - $300 on every 1M';
-        } else if (typeof dict.s3_mult_nm === 'function') {
-          subsequentEarn.textContent = dict.s3_mult_nm(volumeInM, minEarn.toLocaleString('en-US'), maxEarn.toLocaleString('en-US'));
-        } else {
-          subsequentEarn.textContent = `${volumeInM}M: $${minEarn.toLocaleString('en-US')} - $${maxEarn.toLocaleString('en-US')}`;
-        }
-      } else {
-        subsequentEarn.textContent = volumeInM === 1 
-          ? '$240 - $300 on every 1M' 
-          : `${volumeInM}M: $${minEarn} - $${maxEarn}`;
-      }
-    }
-  };
-
-  if (volumeRange) {
-    volumeRange.addEventListener('input', window.recalculateSimulator);
   }
 
-  // Initial calculation
-  window.recalculateSimulator();
+  if (volumeRange) {
+    volumeRange.addEventListener('input', calculate);
+    calculate();
+  }
 }

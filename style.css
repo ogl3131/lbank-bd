@@ -1,123 +1,145 @@
-/* Custom Styles for LBank BD & KOC Portal */
+/* LBank KOC & MCN Hub - Sleek Minimalist Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap');
 
-/* Strictly prevent horizontal scrolling on mobile */
+:root {
+  --bg-dark: #080904;
+  --yellow-main: #ffd400;
+  --yellow-bright: #e8ff00;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 212, 0, 0.16);
+}
+
+/* Ensure no horizontal scroll */
 html, body {
   overflow-x: hidden !important;
-  max-width: 100% !important;
+  max-width: 100vw !important;
   width: 100% !important;
-  position: relative;
-  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
+/* Background blueprint grid texture */
+.blueprint-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.10;
+  background-image: 
+    linear-gradient(90deg, rgba(255, 212, 0, 0.14) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(75, 132, 119, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 212, 0, 0.06) 64px, transparent 64px);
+  background-size: 112px 112px, 112px 112px, 224px 224px;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #080B10;
+  background: #080904;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1F2839;
-  border-radius: 4px;
+  background: #1a1e12;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #F5C400;
+  background: var(--yellow-main);
 }
 
-/* Glassmorphism Classes */
-.glass-panel {
-  background: rgba(18, 23, 34, 0.75);
+/* Card Styling */
+.hub-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(245, 196, 0, 0.15);
+  border-radius: 24px;
+  transition: all 0.25s ease-in-out;
+}
+.hub-card:hover {
+  border-color: rgba(255, 212, 0, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Slider Custom Styling */
+/* Tab active button */
+.tab-btn.active {
+  background-color: var(--yellow-bright) !important;
+  color: #000000 !important;
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(232, 255, 0, 0.25);
+}
+
+/* Range Slider */
 input[type=range] {
   -webkit-appearance: none;
-  background: #182030;
+  appearance: none;
+  width: 100%;
+  background: #181d11;
   border-radius: 9999px;
   height: 8px;
-  max-width: 100%;
+  outline: none;
 }
-
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: #F5C400;
+  background: var(--yellow-bright);
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(245, 196, 0, 0.6);
-  border: 2px solid #000;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: 3px solid #080904;
+  box-shadow: 0 0 14px rgba(232, 255, 0, 0.7);
+  transition: transform 0.15s ease;
 }
-
 input[type=range]::-webkit-slider-thumb:hover {
   transform: scale(1.15);
-  box-shadow: 0 0 18px rgba(245, 196, 0, 0.9);
 }
-
 input[type=range]::-moz-range-thumb {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: #F5C400;
+  background: var(--yellow-bright);
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(245, 196, 0, 0.6);
-  border: 2px solid #000;
+  border: 3px solid #080904;
 }
 
-/* Pulse Glow Animation */
-@keyframes goldPulse {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(245, 196, 0, 0.15);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(245, 196, 0, 0.35);
-  }
+/* RTL Urdu styling */
+body.lang-ur {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+body.lang-ur .hero-title,
+body.lang-ur .text-left {
+  text-align: right;
 }
 
-.glow-card {
-  animation: goldPulse 4s infinite ease-in-out;
+/* Tab panel transition */
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tab-panel.active {
+  display: block;
 }
 
-/* Language Dropdown Animation */
-#lang-dropdown-menu {
-  animation: fadeInDown 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes fadeInDown {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Multi-language Typography Support */
-body.lang-ur {
-  font-family: 'Segoe UI', Tahoma, 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', sans-serif;
-  letter-spacing: 0;
-}
-
-[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]),
-[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]),
-[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]),
-[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 1;
-}
-
-/* Responsive utilities */
-.break-anywhere {
-  overflow-wrap: anywhere;
-  word-break: break-word;
 }
